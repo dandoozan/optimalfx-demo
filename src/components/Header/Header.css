@@ -1,0 +1,5 @@
+.header {
+  background: hsl(240, 71%, 80%);
+  grid-area: header;
+  height: 100px;
+}
