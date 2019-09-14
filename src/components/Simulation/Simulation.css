@@ -1,5 +1,5 @@
 .simulation{
-  width: 500px;
+  width: var(--main-content-width);
   height: 310px;
   background: hsl(0, 46%, 74%);
   grid-area: simulation;
