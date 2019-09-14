@@ -1,7 +1,7 @@
 .app {
-  background: #f0d198;
+  background: #eeddbf;
   display: grid;
-  grid-template-columns: auto 600px auto;
+  grid-template-columns: auto var(--main-content-width) auto;
   grid-template-areas:
     'header header header'
     '. desc .'

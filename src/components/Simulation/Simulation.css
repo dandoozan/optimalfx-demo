@@ -1,10 +1,14 @@
 .simulation {
   width: var(--main-content-width);
-  height: 310px;
   background: hsl(0, 46%, 74%);
   grid-area: simulation;
 }
 
-.chart-container {
+.simulation__chart-container {
   display: flex;
+}
+.simulation__button-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -8,11 +8,14 @@ export default function Simulation() {
   return (
     <div className="simulation">
       <h2>Simulation</h2>
-      <div className="chart-container">
+      <div className="simulation__chart-container">
         <Chart />
         <Trades />
       </div>
-      <Button>Continue Trading</Button>
+      <div className="simulation__button-bar">
+        <Button variant="secondary">Reset</Button>
+        <Button size="lg">Continue Trading</Button>
+      </div>
     </div>
   );
 }
