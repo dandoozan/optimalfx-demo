@@ -1,0 +1,25 @@
+
+
+.bar__background-rect {
+  fill: white;
+}
+.bar:hover .bar__background-rect {
+  fill: #eee;
+  stroke: #eee;
+}
+
+.bar__high-low-line {
+  stroke: black;
+}
+
+.bar__open-close-rect--up-bar {
+  fill: green;
+}
+.bar__open-close-rect--down-bar {
+  fill: darkred;
+}
+
+.bar__left-line,
+.bar__right-line {
+  stroke: white; /* Make stroke white to provide visual spacing between the bars */
+}
