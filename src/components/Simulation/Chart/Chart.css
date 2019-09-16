@@ -3,4 +3,5 @@
   width: var(--chart-width);
   height: calc(var(--chart-width) / 2); */
   grid-area: chart;
+  background: white;
 }
