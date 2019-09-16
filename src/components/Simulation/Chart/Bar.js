@@ -2,12 +2,12 @@ import React from 'react';
 import './Bar.css';
 
 export default function Bar(props) {
-  let { date, open, high, low, close, barWidth, xScale, yScale } = props;
+  let { date, open, high, low, close, barWidth, xScale, yScale, isSelected } = props;
   let x = xScale(date);
   let isUpBar = close > open;
 
   return (
-    <g className="bar">
+    <g className={`bar${isSelected ? ' bar--selected' : ''}`}>
       <rect
         className="bar__background-rect"
         x={x}

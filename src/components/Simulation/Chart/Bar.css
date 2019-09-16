@@ -23,3 +23,8 @@
 .bar__right-line {
   stroke: white; /* Make stroke white to provide visual spacing between the bars */
 }
+
+.bar--selected .bar__right-line {
+  stroke: red;
+  fill: red;
+}
