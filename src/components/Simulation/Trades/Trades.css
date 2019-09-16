@@ -1,4 +1,4 @@
 .trades {
   background: #eee;
-  flex-grow: 1;
+  grid-area: trades;
 }

@@ -2,4 +2,5 @@
   /* --chart-width: calc(var(--main-content-width) * 3 / 4);
   width: var(--chart-width);
   height: calc(var(--chart-width) / 2); */
+  grid-area: chart;
 }

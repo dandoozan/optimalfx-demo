@@ -2,13 +2,11 @@
   width: var(--main-content-width);
   background: hsl(0, 46%, 74%);
   grid-area: simulation;
+  display: grid;
+  grid-template-columns: min-content;
+  grid-template-areas:
+			"legend legend"
+			"chart trades"
+      "controls controls";
 }
 
-.simulation__chart-container {
-  display: flex;
-}
-.simulation__button-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
