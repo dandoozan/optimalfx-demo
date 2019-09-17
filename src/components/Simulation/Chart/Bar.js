@@ -2,12 +2,12 @@ import React from 'react';
 import './Bar.css';
 
 export default function Bar(props) {
-  let { date, open, high, low, close, barWidth, xScale, yScale, isSelected } = props;
+  let { date, open, high, low, close, barWidth, xScale, yScale, isCurrent, isBase } = props;
   let x = xScale(date);
   let isUpBar = close > open;
 
   return (
-    <g className={`bar${isSelected ? ' bar--selected' : ''}`}>
+    <g className={`bar${isCurrent ? ' bar--current' : ''}${isBase ? ' bar--base' : ''}`}>
       <rect
         className="bar__background-rect"
         x={x}
@@ -26,7 +26,7 @@ export default function Bar(props) {
         className={`bar__open-close-rect--${isUpBar ? 'up-bar' : 'down-bar'}`}
         x={x}
         y={isUpBar ? yScale(close) : yScale(open)}
-        width={barWidth}
+        width={barWidth - 1} //subtract 1 so that there is visual spacing between the bars
         height={
           isUpBar ? yScale(open) - yScale(close) : yScale(close) - yScale(open)
         }

@@ -1,11 +1,28 @@
 import React from 'react';
 import Bar from './Bar';
 
-function Candlestick({ ohlcData, barJustCompleted, ...rest }) {
+function Candlestick(props) {
+  let {
+    ohlcData,
+    barJustCompleted,
+    xScale,
+    yScale,
+    barWidth,
+    tradeObj,
+  } = props;
   return (
     <g className="candlestick">
       {ohlcData.map((d, i) => (
-        <Bar {...d} {...rest} isSelected={barJustCompleted === i} />
+        <Bar
+          {...d}
+          {...{ xScale, yScale, barWidth }}
+          isCurrent={barJustCompleted === i}
+          isBase={
+            tradeObj &&
+            barJustCompleted - tradeObj.barsBack < i &&
+            i <= barJustCompleted
+          }
+        />
       ))}
     </g>
   );

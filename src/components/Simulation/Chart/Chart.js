@@ -17,10 +17,12 @@ function createYScale(data, height) {
       Math.max(...data.map(d => d.high)),
     ])
     .range([height, 0])
-    .nice()
+    .nice();
 }
 
-export default function Chart({ohlcData, barJustCompleted}) {
+export default function Chart(props) {
+  let { ohlcData } = props;
+
   let chartWidth = (800 * 3) / 4; //todo: get the 800 from css variable "--main-content-width"
   let chartHeight = chartWidth / 2;
   let paddingTop = 20;
@@ -33,7 +35,7 @@ export default function Chart({ohlcData, barJustCompleted}) {
 
   return (
     <svg className="chart" width={chartWidth} height={chartHeight}>
-      <Candlestick {...{ ohlcData, xScale, yScale, barWidth, barJustCompleted }} />
+      <Candlestick {...{ xScale, yScale, barWidth, ...props }} />
       <XAxis {...{ xScale, x: 0, y: chartHeight - xAxisHeight }} />
     </svg>
   );

@@ -5,7 +5,6 @@
 }
 .bar:hover .bar__background-rect {
   fill: #eee;
-  stroke: #eee;
 }
 
 .bar__high-low-line {
@@ -19,12 +18,10 @@
   fill: darkred;
 }
 
-.bar__left-line,
-.bar__right-line {
-  stroke: white; /* Make stroke white to provide visual spacing between the bars */
-}
-
-.bar--selected .bar__right-line {
+.bar--current .bar__right-line {
   stroke: red;
-  fill: red;
+}
+.bar--base .bar__background-rect {
+  fill: #eee;
+  stroke: #eee;
 }
