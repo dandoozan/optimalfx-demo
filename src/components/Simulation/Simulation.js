@@ -10,12 +10,14 @@ import ohlcData from '../../ohlc.json';
 import tradeData from '../../tradeData.json';
 
 export default class Simulation extends Component {
-  intrvl;
-  state = {
-    barJustCompleted: -1,
-  };
+  constructor(props) {
+    super(props);
+    this.intrvl = null;
+    this.state = { barJustCompleted: -1 };
+    this.onContinue = this.onContinue.bind(this);
+  }
 
-  componentDidMount() {
+  run() {
     this.intrvl = setInterval(() => {
       if (this.state.barJustCompleted < ohlcData.length - 1) {
         this.setState(({ barJustCompleted }) => ({
@@ -27,7 +29,11 @@ export default class Simulation extends Component {
     }, 20);
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidMount() {
+    this.run();
+  }
+
+  componentDidUpdate() {
     if (tradeData[this.state.barJustCompleted]) {
       clearInterval(this.intrvl);
     }
@@ -35,6 +41,10 @@ export default class Simulation extends Component {
 
   componentWillUnmount() {
     clearInterval(this.intrvl);
+  }
+
+  onContinue(e) {
+    this.run();
   }
 
   render() {
@@ -45,7 +55,7 @@ export default class Simulation extends Component {
         <Legend />
         <Chart {...{ ohlcData, currentBar: barJustCompleted, tradeObj }} />
         <Trades />
-        <ChartControls />
+        <ChartControls onContinue={this.onContinue} />
       </div>
     );
   }
