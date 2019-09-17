@@ -15,14 +15,22 @@ export default class Simulation extends Component {
     this.intrvl = null;
     this.state = { barJustCompleted: -1 };
     this.onContinue = this.onContinue.bind(this);
+    this.onReset = this.onReset.bind(this);
   }
 
   run() {
     this.intrvl = setInterval(() => {
       if (this.state.barJustCompleted < ohlcData.length - 1) {
-        this.setState(({ barJustCompleted }) => ({
-          barJustCompleted: barJustCompleted + 1,
-        }));
+        this.setState(
+          ({ barJustCompleted }) => ({
+            barJustCompleted: barJustCompleted + 1,
+          }),
+          () => {
+            if (tradeData[this.state.barJustCompleted]) {
+              clearInterval(this.intrvl);
+            }
+          }
+        );
       } else {
         clearInterval(this.intrvl);
       }
@@ -33,18 +41,16 @@ export default class Simulation extends Component {
     this.run();
   }
 
-  componentDidUpdate() {
-    if (tradeData[this.state.barJustCompleted]) {
-      clearInterval(this.intrvl);
-    }
-  }
-
   componentWillUnmount() {
     clearInterval(this.intrvl);
   }
 
   onContinue(e) {
     this.run();
+  }
+  onReset(e) {
+    clearInterval(this.intrvl);
+    this.setState({ barJustCompleted: -1 }, this.run);
   }
 
   render() {
@@ -55,7 +61,7 @@ export default class Simulation extends Component {
         <Legend />
         <Chart {...{ ohlcData, currentBar: barJustCompleted, tradeObj }} />
         <Trades />
-        <ChartControls onContinue={this.onContinue} />
+        <ChartControls onContinue={this.onContinue} onReset={this.onReset} />
       </div>
     );
   }
