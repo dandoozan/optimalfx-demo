@@ -2,12 +2,28 @@ import React from 'react';
 import './Bar.css';
 
 export default function Bar(props) {
-  let { date, open, high, low, close, barWidth, xScale, yScale, isCurrent, isBase } = props;
+  let {
+    date,
+    open,
+    high,
+    low,
+    close,
+    barWidth,
+    xScale,
+    yScale,
+    isCurrent,
+    isBase,
+    isSimilar,
+  } = props;
   let x = xScale(date);
   let isUpBar = close > open;
 
   return (
-    <g className={`bar${isCurrent ? ' bar--current' : ''}${isBase ? ' bar--base' : ''}`}>
+    <g
+      className={`bar${isCurrent ? ' bar--current' : ''}${
+        isBase ? ' bar--base' : ''
+      }${isSimilar ? ' bar--similar' : ''}`}
+    >
       <rect
         className="bar__background-rect"
         x={x}

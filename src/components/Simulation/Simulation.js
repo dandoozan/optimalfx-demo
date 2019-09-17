@@ -28,7 +28,7 @@ export default class Simulation extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (tradeData[ohlcData[this.state.barJustCompleted].date]) {
+    if (tradeData[this.state.barJustCompleted]) {
       clearInterval(this.intrvl);
     }
   }
@@ -39,12 +39,11 @@ export default class Simulation extends Component {
 
   render() {
     let { barJustCompleted } = this.state;
-    let tradeObj =
-      barJustCompleted > -1 && tradeData[ohlcData[barJustCompleted].date];
+    let tradeObj = tradeData[barJustCompleted];
     return (
       <div className="simulation">
         <Legend />
-        <Chart {...{ ohlcData, barJustCompleted, tradeObj }} />
+        <Chart {...{ ohlcData, currentBar: barJustCompleted, tradeObj }} />
         <Trades />
         <ChartControls />
       </div>

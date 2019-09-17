@@ -22,6 +22,10 @@
   stroke: red;
 }
 .bar--base .bar__background-rect {
-  fill: #eee;
-  stroke: #eee;
+  fill: hsl(0, 0%, 94%);
+  stroke: hsl(0, 0%, 94%);
+}
+.bar--similar .bar__background-rect {
+  fill: hsl(205, 100%, 94%);
+  stroke: hsl(205, 100%, 94%);
 }
