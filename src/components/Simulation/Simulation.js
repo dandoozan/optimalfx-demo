@@ -17,6 +17,7 @@ export default class Simulation extends Component {
     super(props);
     this.onContinue = this.onContinue.bind(this);
     this.onReset = this.onReset.bind(this);
+    this.onTradeClick = this.onTradeClick.bind(this);
   }
 
   run() {
@@ -45,7 +46,10 @@ export default class Simulation extends Component {
       //this trade (to prevent an infinite loop)
       if (trades.length === prevState.trades.length) {
         this.setState(({ trades }) => ({
-          trades: [...trades, patterns[currentBar].trade],
+          trades: [
+            ...trades,
+            { ...patterns[currentBar].trade, startIndex: currentBar + 1 },
+          ],
         }));
       }
 
@@ -65,6 +69,9 @@ export default class Simulation extends Component {
     clearInterval(this.intrvl);
     this.setState({ currentBar: -1, trades: [] }, this.run);
   }
+  onTradeClick(tradeIndex) {
+    this.setState({ currentBar: tradeIndex - 1 });
+  }
 
   render() {
     let { currentBar, trades } = this.state;
@@ -73,7 +80,7 @@ export default class Simulation extends Component {
       <div className="simulation">
         <Legend />
         <Chart {...{ ohlcData, currentBar, pattern }} />
-        <Trades {...{ ohlcData, trades }} />
+        <Trades {...{ ohlcData, trades }} onTradeClick={this.onTradeClick} />
         <ChartControls onContinue={this.onContinue} onReset={this.onReset} />
       </div>
     );

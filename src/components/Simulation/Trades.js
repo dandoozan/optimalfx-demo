@@ -4,7 +4,7 @@ import { timeFormat } from 'd3';
 import { Table } from 'react-bootstrap';
 
 export default function Trades(props) {
-  let { ohlcData, trades } = props;
+  let { ohlcData, trades, onTradeClick } = props;
   let timeFormatter = timeFormat('%I:%M');
 
   return (
@@ -19,7 +19,7 @@ export default function Trades(props) {
         </thead>
         <tbody>
           {trades.map(({ startIndex, direction }) => (
-            <tr>
+            <tr onClick={onTradeClick.bind(null, startIndex)}>
               <td>{timeFormatter(ohlcData[startIndex].date)}</td>
               <td>{direction}</td>
             </tr>

@@ -3,8 +3,21 @@
     "barsBack": 3,
     "similar": [8, 12],
     "trade": {
-      "direction": "long",
-      "startIndex": 21
+      "direction": "long"
+    }
+  },
+  "40": {
+    "barsBack": 4,
+    "similar": [28, 15],
+    "trade": {
+      "direction": "short"
+    }
+  },
+  "50": {
+    "barsBack": 4,
+    "similar": [34, 10],
+    "trade": {
+      "direction": "short"
     }
   }
 }
