@@ -1,0 +1,10 @@
+{
+  "20": {
+    "barsBack": 3,
+    "similar": [8, 12],
+    "trade": {
+      "direction": "long",
+      "startIndex": 21
+    }
+  }
+}

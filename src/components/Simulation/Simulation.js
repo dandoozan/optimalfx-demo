@@ -7,30 +7,24 @@ import Trades from './Trades';
 
 //todo: think about where to put json data
 import ohlcData from '../../ohlc.json';
-import tradeData from '../../tradeData.json';
+import patterns from '../../patterns.json';
 
 export default class Simulation extends Component {
+  intrvl = null;
+  state = { currentBar: -1, trades: [] };
+
   constructor(props) {
     super(props);
-    this.intrvl = null;
-    this.state = { barJustCompleted: -1 };
     this.onContinue = this.onContinue.bind(this);
     this.onReset = this.onReset.bind(this);
   }
 
   run() {
     this.intrvl = setInterval(() => {
-      if (this.state.barJustCompleted < ohlcData.length - 1) {
-        this.setState(
-          ({ barJustCompleted }) => ({
-            barJustCompleted: barJustCompleted + 1,
-          }),
-          () => {
-            if (tradeData[this.state.barJustCompleted]) {
-              clearInterval(this.intrvl);
-            }
-          }
-        );
+      if (this.state.currentBar < ohlcData.length - 1) {
+        this.setState(({ currentBar }) => ({
+          currentBar: currentBar + 1,
+        }));
       } else {
         clearInterval(this.intrvl);
       }
@@ -39,6 +33,25 @@ export default class Simulation extends Component {
 
   componentDidMount() {
     this.run();
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    let { currentBar, trades } = this.state;
+
+    //if there's a trade at currentBar
+    if (patterns[currentBar] && patterns[currentBar].trade) {
+      //add it to trades
+      //check trades.length to make sure I haven't already added
+      //this trade (to prevent an infinite loop)
+      if (trades.length === prevState.trades.length) {
+        this.setState(({ trades }) => ({
+          trades: [...trades, patterns[currentBar].trade],
+        }));
+      }
+
+      //stop the simulation
+      clearInterval(this.intrvl);
+    }
   }
 
   componentWillUnmount() {
@@ -50,17 +63,17 @@ export default class Simulation extends Component {
   }
   onReset(e) {
     clearInterval(this.intrvl);
-    this.setState({ barJustCompleted: -1 }, this.run);
+    this.setState({ currentBar: -1, trades: [] }, this.run);
   }
 
   render() {
-    let { barJustCompleted } = this.state;
-    let tradeObj = tradeData[barJustCompleted];
+    let { currentBar, trades } = this.state;
+    let pattern = patterns[currentBar];
     return (
       <div className="simulation">
         <Legend />
-        <Chart {...{ ohlcData, currentBar: barJustCompleted, tradeObj }} />
-        <Trades />
+        <Chart {...{ ohlcData, currentBar, pattern }} />
+        <Trades {...{ ohlcData, trades }} />
         <ChartControls onContinue={this.onContinue} onReset={this.onReset} />
       </div>
     );

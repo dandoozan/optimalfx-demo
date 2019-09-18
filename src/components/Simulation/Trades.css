@@ -1,4 +1,6 @@
 .trades {
   background: #eee;
   grid-area: trades;
+  padding: 10px 15px;
+  text-transform: capitalize;
 }
