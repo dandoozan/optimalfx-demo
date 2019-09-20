@@ -12,6 +12,7 @@ export default function Bar(props) {
     xScale,
     yScale,
     isCurrent,
+    isSelected,
     isBase,
     isSimilar,
   } = props;
@@ -21,8 +22,8 @@ export default function Bar(props) {
   return (
     <g
       className={`bar${isCurrent ? ' bar--current' : ''}${
-        isBase ? ' bar--base' : ''
-      }${isSimilar ? ' bar--similar' : ''}`}
+        isSelected ? ' bar--selected' : ''
+      }${isBase ? ' bar--base' : ''}${isSimilar ? ' bar--similar' : ''}`}
     >
       <rect
         className="bar__background-rect"

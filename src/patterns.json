@@ -1,6 +1,7 @@
 {
   "20": {
     "barsBack": 3,
+    "base": 20,
     "similar": [8, 12],
     "trade": {
       "direction": "long"
@@ -8,6 +9,7 @@
   },
   "40": {
     "barsBack": 4,
+    "base": 40,
     "similar": [28, 15],
     "trade": {
       "direction": "short"
@@ -15,6 +17,7 @@
   },
   "50": {
     "barsBack": 4,
+    "base": 50,
     "similar": [34, 10],
     "trade": {
       "direction": "short"

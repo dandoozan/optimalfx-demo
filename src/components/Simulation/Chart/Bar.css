@@ -21,6 +21,13 @@
 .bar--current .bar__right-line {
   stroke: red;
 }
+.bar--current:not(.bar--selected) .bar__right-line {
+  stroke-opacity: 0.5;
+}
+.bar--selected:not(.bar--current) .bar__right-line {
+  stroke: blue;
+  stroke-dasharray: 4;
+}
 .bar--base .bar__background-rect {
   fill: hsl(0, 0%, 94%);
   stroke: hsl(0, 0%, 94%);

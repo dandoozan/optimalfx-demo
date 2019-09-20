@@ -6,7 +6,7 @@ export default function ChartControls(props) {
   return (
     <div className="chart-controls">
       <Button variant="secondary" onClick={props.onReset}>Reset</Button>
-      <Button size="lg" onClick={props.onContinue}>Continue Trading</Button>
+      <Button size="lg" onClick={props.onContinue}>Continue</Button>
     </div>
   );
 }
