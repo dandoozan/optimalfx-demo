@@ -80,7 +80,12 @@ export default class Simulation extends Component<Props, State> {
     this.setState({ currentBar: -1, trades: [] }, this.run);
   }
   onTradeClick(tradeIndex) {
-    this.setState({ currentBar: tradeIndex - 1 });
+    //subtract 1 because the "current bar" is the one right
+    //before the one the trade starts at
+    this.setState(({ trades }) => ({
+      currentBar: tradeIndex - 1,
+      trades: trades.filter(({ startIndex }) => startIndex <= tradeIndex),
+    }));
   }
 
   render() {
