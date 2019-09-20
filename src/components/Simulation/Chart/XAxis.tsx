@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { select, axisBottom } from 'd3';
 
-export default class XAxis extends Component {
-  constructor(props) {
+interface Props {
+  xScale: any;
+  x: number;
+  y: number;
+}
+
+export default class XAxis extends Component<Props> {
+  private xAxis;
+
+  constructor(props: Props) {
     super(props);
     this.xAxis = React.createRef();
   }

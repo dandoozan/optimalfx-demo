@@ -9,8 +9,14 @@ import Trades from './Trades';
 import ohlcData from '../../ohlc.json';
 import patterns from '../../patterns.json';
 
-export default class Simulation extends Component {
-  intrvl = null;
+interface Props {}
+interface State {
+  currentBar: number;
+  trades: any[];
+}
+
+export default class Simulation extends Component<Props, State> {
+  intrvl: number | undefined;
   state = { currentBar: -1, trades: [] };
 
   constructor(props) {
@@ -21,7 +27,7 @@ export default class Simulation extends Component {
   }
 
   run() {
-    this.intrvl = setInterval(() => {
+    this.intrvl = window.setInterval(() => {
       if (this.state.currentBar < ohlcData.length - 1) {
         this.setState(({ currentBar }) => ({
           currentBar: currentBar + 1,
@@ -42,9 +48,8 @@ export default class Simulation extends Component {
     //if there's a trade at currentBar
     if (patterns[currentBar] && patterns[currentBar].trade) {
       //add it to trades
-      //check trades.length to make sure I haven't already added
-      //this trade (to prevent an infinite loop)
-      if (trades.length === prevState.trades.length) {
+      //this check prevents an infinite loop
+      if (trades === prevState.trades) {
         this.setState(({ trades }) => ({
           trades: [
             ...trades,
