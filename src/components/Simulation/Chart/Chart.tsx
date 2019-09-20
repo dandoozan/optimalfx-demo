@@ -3,6 +3,7 @@ import './Chart.css';
 import Candlestick from './Candlestick';
 import XAxis from './XAxis';
 import { scaleTime, scaleLinear } from 'd3';
+import TradeMarkers from './TradeMarkers';
 
 function createXScale(data, width) {
   return scaleTime()
@@ -21,7 +22,7 @@ function createYScale(data, height) {
 }
 
 export default function Chart(props) {
-  let { ohlcData } = props;
+  let { ohlcData, currentBar, pattern, trades } = props;
 
   let chartWidth = (800 * 3) / 4; //todo: get the 800 from css variable "--main-content-width"
   let chartHeight = chartWidth / 2;
@@ -35,8 +36,9 @@ export default function Chart(props) {
 
   return (
     <svg className="chart" width={chartWidth} height={chartHeight}>
-      <Candlestick {...{ xScale, yScale, barWidth, ...props }} />
+      <Candlestick {...{ ohlcData, currentBar, pattern, xScale, yScale, barWidth }} />
       <XAxis {...{ xScale, x: 0, y: chartHeight - xAxisHeight }} />
+      <TradeMarkers {...{ trades, xScale, yScale }} />
     </svg>
   );
 }

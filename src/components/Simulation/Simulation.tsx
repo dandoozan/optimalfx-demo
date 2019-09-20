@@ -50,10 +50,15 @@ export default class Simulation extends Component<Props, State> {
       //add it to trades
       //this check prevents an infinite loop
       if (trades === prevState.trades) {
+        let startIndex = currentBar + 1; //add 1 because the trade starts at the next bar
         this.setState(({ trades }) => ({
           trades: [
             ...trades,
-            { ...patterns[currentBar].trade, startIndex: currentBar + 1 },
+            {
+              ...patterns[currentBar].trade,
+              startIndex,
+              startBar: ohlcData[startIndex],
+            },
           ],
         }));
       }
@@ -84,7 +89,7 @@ export default class Simulation extends Component<Props, State> {
     return (
       <div className="simulation">
         <Legend />
-        <Chart {...{ ohlcData, currentBar, pattern }} />
+        <Chart {...{ ohlcData, currentBar, pattern, trades }} />
         <Trades {...{ ohlcData, trades }} onTradeClick={this.onTradeClick} />
         <ChartControls onContinue={this.onContinue} onReset={this.onReset} />
       </div>
