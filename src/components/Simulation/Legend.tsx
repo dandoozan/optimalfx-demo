@@ -3,8 +3,8 @@ import './Legend.css';
 
 export default function Legend() {
   return (
-    <g className="legend">
+    <div className="legend">
       Legend
-    </g>
+    </div>
   )
 }

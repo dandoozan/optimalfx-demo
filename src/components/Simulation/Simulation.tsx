@@ -26,9 +26,10 @@ export default class Simulation extends Component<Props, State> {
 
     this.tradeSet = new Set();
 
-    this.onContinue = this.onContinue.bind(this);
-    this.onReset = this.onReset.bind(this);
+    this.onBarClick = this.onBarClick.bind(this);
     this.onTradeClick = this.onTradeClick.bind(this);
+    this.onReset = this.onReset.bind(this);
+    this.onContinue = this.onContinue.bind(this);
   }
 
   run() {
@@ -77,8 +78,20 @@ export default class Simulation extends Component<Props, State> {
     clearInterval(this.intrvl);
   }
 
-  onContinue(e) {
-    this.run();
+  onBarClick(barIndex) {
+    let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
+    if (this.tradeSet.has(tradeIndex)) {
+      this.setState({
+        selectedIndex: barIndex,
+      });
+    }
+  }
+  onTradeClick(tradeIndex) {
+    //subtract 1 because the "current bar" is the one right
+    //before the one the trade starts at
+    this.setState({
+      selectedIndex: tradeIndex - 1,
+    });
   }
   onReset(e) {
     clearInterval(this.intrvl);
@@ -88,25 +101,29 @@ export default class Simulation extends Component<Props, State> {
       this.run
     );
   }
-  onTradeClick(tradeIndex) {
-    //subtract 1 because the "current bar" is the one right
-    //before the one the trade starts at
-    this.setState({
-      selectedIndex: tradeIndex - 1,
-    });
+  onContinue(e) {
+    this.run();
   }
 
   render() {
+    let { onBarClick, onTradeClick, onReset, onContinue } = this;
     let { simulationIndex, selectedIndex, trades } = this.state;
     let pattern = patterns[selectedIndex] || patterns[simulationIndex];
     return (
       <div className="simulation">
         <Legend />
         <Chart
-          {...{ ohlcData, simulationIndex, selectedIndex, pattern, trades }}
+          {...{
+            ohlcData,
+            simulationIndex,
+            selectedIndex,
+            pattern,
+            trades,
+            onBarClick,
+          }}
         />
-        <Trades {...{ ohlcData, trades }} onTradeClick={this.onTradeClick} />
-        <ChartControls onContinue={this.onContinue} onReset={this.onReset} />
+        <Trades {...{ ohlcData, trades, onTradeClick }} />
+        <ChartControls {...{ onContinue, onReset }} />
       </div>
     );
   }

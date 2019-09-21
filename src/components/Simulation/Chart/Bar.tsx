@@ -3,6 +3,7 @@ import './Bar.css';
 
 export default function Bar(props) {
   let {
+    index,
     date,
     open,
     high,
@@ -15,6 +16,7 @@ export default function Bar(props) {
     isSelected,
     isBase,
     isSimilar,
+    onBarClick,
   } = props;
   let x = xScale(date);
   let isUpBar = close > open;
@@ -24,6 +26,7 @@ export default function Bar(props) {
       className={`bar${isCurrent ? ' bar--current' : ''}${
         isSelected ? ' bar--selected' : ''
       }${isBase ? ' bar--base' : ''}${isSimilar ? ' bar--similar' : ''}`}
+      onClick={onBarClick.bind(null, index)}
     >
       <rect
         className="bar__background-rect"
