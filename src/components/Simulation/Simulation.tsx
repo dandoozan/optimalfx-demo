@@ -90,11 +90,17 @@ export default class Simulation extends Component<Props, State> {
 
   onBarMouseOver(barIndex: number) {
     let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
-    if (this.tradeIndicesOnChart.has(tradeIndex)) {
-      this.setState({
-        focalTrade: tradeIndex,
-      });
-    }
+
+    //let either of the two bars surrounding the trade indicator
+    //trigger the focal trade
+    let indicesThatCanTriggerFocalTrade = [tradeIndex, tradeIndex - 1];
+    indicesThatCanTriggerFocalTrade.forEach(index => {
+      if (this.tradeIndicesOnChart.has(index)) {
+        this.setState({
+          focalTrade: index,
+        });
+      }
+    });
   }
   onBarMouseOut(barIndex: number) {
     //only setState if barIndex is not -1 already (which it will
@@ -107,12 +113,19 @@ export default class Simulation extends Component<Props, State> {
   }
   onBarClick(barIndex: number) {
     let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
-    if (this.tradeIndicesOnChart.has(tradeIndex)) {
-      this.setState({
-        selectedIndex: barIndex,
-      });
-    }
+
+    //let either of the two bars surrounding the trade indicator
+    //trigger the focal trade
+    let indicesThatCanTriggerSelection = [tradeIndex, tradeIndex - 1];
+    indicesThatCanTriggerSelection.forEach(index => {
+      if (this.tradeIndicesOnChart.has(index)) {
+        this.setState({
+          selectedIndex: index - 1,
+        });
+      }
+    });
   }
+
   onTradeMouseOver(tradeIndex: number) {
     this.setState({
       focalTrade: tradeIndex,
