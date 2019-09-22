@@ -20,6 +20,7 @@ function Candlestick(props) {
       {ohlcData.map((d, i) => (
         <Bar
           {...{
+            key: i,
             ...d,
             index: i,
             xScale,

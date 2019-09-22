@@ -14,6 +14,7 @@ export default function TradeMarkers(props) {
         let points = [[x, y], [x - xDiff, y + yDiff], [x + xDiff, y + yDiff]];
         return (
           <polygon
+            key={startIndex}
             className={`trade-marker${
               focalTrade === startIndex ? ' trade-marker--focal' : ''
             }`}
