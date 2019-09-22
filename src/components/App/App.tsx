@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css';
-import Header from '../Header/Header';
+import Header from './Header';
 import Simulation from '../Simulation/Simulation';
-import Description from '../Description/Description';
+import Description from './Description';
 
 function App() {
   return (

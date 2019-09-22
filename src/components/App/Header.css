@@ -1,10 +1,10 @@
 .header {
-  background: hsl(240, 71%, 80%);
+  background: hsl(0, 0%, 93%);
   grid-area: header;
   display: flex;
   justify-content: center;
 }
-.header__inner-container {
+.header__inner {
   width: var(--main-content-width);
   padding-top: 50px;
 }
