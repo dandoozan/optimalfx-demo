@@ -27,7 +27,7 @@ export default class Simulation extends Component<Props, State> {
     focalTrade: -1,
   };
 
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.tradeIndicesOnChart = new Set();
@@ -45,7 +45,7 @@ export default class Simulation extends Component<Props, State> {
   run() {
     this.intrvl = window.setInterval(() => {
       if (this.state.simulationIndex < ohlcData.length - 1) {
-        this.setState(({ simulationIndex, selectedIndex }) => {
+        this.setState(({ simulationIndex }) => {
           let nextIndex = simulationIndex + 1;
           return { simulationIndex: nextIndex, selectedIndex: nextIndex };
         });
@@ -59,8 +59,8 @@ export default class Simulation extends Component<Props, State> {
     this.run();
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    let { simulationIndex, trades } = this.state;
+  componentDidUpdate(prevProps: Props, prevState: State) {
+    let { simulationIndex } = this.state;
 
     //if there's a trade at simulationIndex
     if (patterns[simulationIndex] && patterns[simulationIndex].trade) {
@@ -88,7 +88,7 @@ export default class Simulation extends Component<Props, State> {
     clearInterval(this.intrvl);
   }
 
-  onBarMouseOver(barIndex) {
+  onBarMouseOver(barIndex: number) {
     let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
     if (this.tradeIndicesOnChart.has(tradeIndex)) {
       this.setState({
@@ -96,7 +96,7 @@ export default class Simulation extends Component<Props, State> {
       });
     }
   }
-  onBarMouseOut(barIndex) {
+  onBarMouseOut(barIndex: number) {
     //only setState if barIndex is not -1 already (which it will
     //be most of the time) (to avoid doing unnecessary work)
     if (this.state.focalTrade !== -1) {
@@ -105,7 +105,7 @@ export default class Simulation extends Component<Props, State> {
       });
     }
   }
-  onBarClick(barIndex) {
+  onBarClick(barIndex: number) {
     let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
     if (this.tradeIndicesOnChart.has(tradeIndex)) {
       this.setState({
@@ -113,17 +113,17 @@ export default class Simulation extends Component<Props, State> {
       });
     }
   }
-  onTradeMouseOver(tradeIndex) {
+  onTradeMouseOver(tradeIndex: number) {
     this.setState({
       focalTrade: tradeIndex,
     });
   }
-  onTradeMouseOut(tradeIndex) {
+  onTradeMouseOut(tradeIndex: number) {
     this.setState({
       focalTrade: -1,
     });
   }
-  onTradeClick(tradeIndex) {
+  onTradeClick(tradeIndex: number) {
     //subtract 1 because the "current bar" is the one right
     //before the one the trade starts at
     this.setState({
