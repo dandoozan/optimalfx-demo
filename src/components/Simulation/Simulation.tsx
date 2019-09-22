@@ -14,19 +14,29 @@ interface State {
   simulationIndex: number;
   selectedIndex: number;
   trades: any[];
+  focalTrade: number;
 }
 
 export default class Simulation extends Component<Props, State> {
   intrvl: number | undefined;
-  tradeSet: Set<number>;
-  state: State = { simulationIndex: -1, selectedIndex: -1, trades: [] };
+  tradeIndicesOnChart: Set<number>;
+  state: State = {
+    simulationIndex: -1,
+    selectedIndex: -1,
+    trades: [],
+    focalTrade: -1,
+  };
 
   constructor(props) {
     super(props);
 
-    this.tradeSet = new Set();
+    this.tradeIndicesOnChart = new Set();
 
+    this.onBarMouseOver = this.onBarMouseOver.bind(this);
+    this.onBarMouseOut = this.onBarMouseOut.bind(this);
     this.onBarClick = this.onBarClick.bind(this);
+    this.onTradeMouseOver = this.onTradeMouseOver.bind(this);
+    this.onTradeMouseOut = this.onTradeMouseOut.bind(this);
     this.onTradeClick = this.onTradeClick.bind(this);
     this.onReset = this.onReset.bind(this);
     this.onContinue = this.onContinue.bind(this);
@@ -56,14 +66,14 @@ export default class Simulation extends Component<Props, State> {
     if (patterns[simulationIndex] && patterns[simulationIndex].trade) {
       //add it to trades
       let startIndex = simulationIndex + 1; //add 1 because the trade starts at the next bar
-      if (!this.tradeSet.has(startIndex)) {
+      if (!this.tradeIndicesOnChart.has(startIndex)) {
         let newTrade = {
           ...patterns[simulationIndex].trade,
           startIndex,
           startBar: ohlcData[startIndex],
         };
 
-        this.tradeSet.add(startIndex);
+        this.tradeIndicesOnChart.add(startIndex);
         this.setState(({ trades }) => ({
           trades: [...trades, newTrade],
         }));
@@ -78,13 +88,40 @@ export default class Simulation extends Component<Props, State> {
     clearInterval(this.intrvl);
   }
 
+  onBarMouseOver(barIndex) {
+    let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
+    if (this.tradeIndicesOnChart.has(tradeIndex)) {
+      this.setState({
+        focalTrade: tradeIndex,
+      });
+    }
+  }
+  onBarMouseOut(barIndex) {
+    //only setState if barIndex is not -1 already (which it will
+    //be most of the time) (to avoid doing unnecessary work)
+    if (this.state.focalTrade !== -1) {
+      this.setState({
+        focalTrade: -1,
+      });
+    }
+  }
   onBarClick(barIndex) {
     let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
-    if (this.tradeSet.has(tradeIndex)) {
+    if (this.tradeIndicesOnChart.has(tradeIndex)) {
       this.setState({
         selectedIndex: barIndex,
       });
     }
+  }
+  onTradeMouseOver(tradeIndex) {
+    this.setState({
+      focalTrade: tradeIndex,
+    });
+  }
+  onTradeMouseOut(tradeIndex) {
+    this.setState({
+      focalTrade: -1,
+    });
   }
   onTradeClick(tradeIndex) {
     //subtract 1 because the "current bar" is the one right
@@ -95,7 +132,7 @@ export default class Simulation extends Component<Props, State> {
   }
   onReset(e) {
     clearInterval(this.intrvl);
-    this.tradeSet.clear();
+    this.tradeIndicesOnChart.clear();
     this.setState(
       { simulationIndex: -1, selectedIndex: -1, trades: [] },
       this.run
@@ -106,8 +143,17 @@ export default class Simulation extends Component<Props, State> {
   }
 
   render() {
-    let { onBarClick, onTradeClick, onReset, onContinue } = this;
-    let { simulationIndex, selectedIndex, trades } = this.state;
+    let {
+      onBarMouseOver,
+      onBarMouseOut,
+      onBarClick,
+      onTradeMouseOver,
+      onTradeMouseOut,
+      onTradeClick,
+      onReset,
+      onContinue,
+    } = this;
+    let { simulationIndex, selectedIndex, trades, focalTrade } = this.state;
     let pattern = patterns[selectedIndex] || patterns[simulationIndex];
     return (
       <div className="simulation">
@@ -119,10 +165,21 @@ export default class Simulation extends Component<Props, State> {
             selectedIndex,
             pattern,
             trades,
+            focalTrade,
+            onBarMouseOver,
+            onBarMouseOut,
             onBarClick,
           }}
         />
-        <Trades {...{ ohlcData, trades, onTradeClick }} />
+        <Trades
+          {...{
+            ohlcData,
+            trades,
+            onTradeMouseOver,
+            onTradeMouseOut,
+            onTradeClick,
+          }}
+        />
         <ChartControls {...{ onContinue, onReset }} />
       </div>
     );

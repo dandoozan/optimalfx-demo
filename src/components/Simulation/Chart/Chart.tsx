@@ -28,6 +28,9 @@ export default function Chart(props) {
     selectedIndex,
     pattern,
     trades,
+    focalTrade,
+    onBarMouseOver,
+    onBarMouseOut,
     onBarClick,
   } = props;
 
@@ -49,6 +52,8 @@ export default function Chart(props) {
           simulationIndex,
           selectedIndex,
           pattern,
+          onBarMouseOver,
+          onBarMouseOut,
           onBarClick,
           xScale,
           yScale,
@@ -56,7 +61,7 @@ export default function Chart(props) {
         }}
       />
       <XAxis {...{ xScale, x: 0, y: chartHeight - xAxisHeight }} />
-      <TradeMarkers {...{ trades, xScale, yScale }} />
+      <TradeMarkers {...{ trades, xScale, yScale, focalTrade }} />
     </svg>
   );
 }

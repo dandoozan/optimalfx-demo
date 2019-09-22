@@ -16,6 +16,8 @@ export default function Bar(props) {
     isSelected,
     isBase,
     isSimilar,
+    onBarMouseOver,
+    onBarMouseOut,
     onBarClick,
   } = props;
   let x = xScale(date);
@@ -26,7 +28,10 @@ export default function Bar(props) {
       className={`bar${isCurrent ? ' bar--current' : ''}${
         isSelected ? ' bar--selected' : ''
       }${isBase ? ' bar--base' : ''}${isSimilar ? ' bar--similar' : ''}`}
+      //todo: don't attach a click/mouseover/out listener if the bar is not one of the trade bars (to avoid doing unnecessary work)
       onClick={onBarClick.bind(null, index)}
+      onMouseOver={onBarMouseOver.bind(null, index)}
+      onMouseOut={onBarMouseOut.bind(null, index)}
     >
       <rect
         className="bar__background-rect"

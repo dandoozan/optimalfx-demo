@@ -2,3 +2,6 @@
   stroke: blue;
   fill: blue;
 }
+.trade-marker--focal {
+  stroke-width: 3px;
+}

@@ -10,6 +10,8 @@ function Candlestick(props) {
     simulationIndex,
     selectedIndex,
     pattern,
+    onBarMouseOver,
+    onBarMouseOut,
     onBarClick,
   } = props;
   let { barsBack, base, similar } = pattern || {};
@@ -23,6 +25,8 @@ function Candlestick(props) {
             xScale,
             yScale,
             barWidth,
+            onBarMouseOver,
+            onBarMouseOut,
             onBarClick,
             isCurrent: simulationIndex === i,
             isSelected: selectedIndex === i,
