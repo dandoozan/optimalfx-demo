@@ -1,10 +1,24 @@
-
-
 .bar__background-rect {
   fill: white;
 }
+
+.bar--base .bar__background-rect {
+  fill: hsl(0, 0%, 90%);
+  stroke: hsl(0, 0%, 90%);
+}
+.bar--similar .bar__background-rect {
+  fill: hsl(0, 0%, 95%);
+  stroke: hsl(0, 0%, 95%);
+}
+
 .bar:hover .bar__background-rect {
-  fill: #eee;
+  fill: hsl(0, 0%, 95%);
+}
+.bar--base:hover .bar__background-rect {
+  fill: hsl(0, 0%, 85%);
+}
+.bar--similar:hover .bar__background-rect {
+  fill: hsl(0, 0%, 90%);
 }
 
 .bar__high-low-line {
@@ -27,12 +41,4 @@
 .bar--selected:not(.bar--current) .bar__right-line {
   stroke: blue;
   stroke-dasharray: 4;
-}
-.bar--base .bar__background-rect {
-  fill: hsl(0, 0%, 94%);
-  stroke: hsl(0, 0%, 94%);
-}
-.bar--similar .bar__background-rect {
-  fill: hsl(205, 100%, 94%);
-  stroke: hsl(205, 100%, 94%);
 }
