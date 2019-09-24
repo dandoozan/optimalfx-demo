@@ -12,7 +12,8 @@
   margin-right: 50px;
 }
 
-.entry__symbol {
+.entry__symbol--pattern,
+.entry__symbol--current-line {
   height: 20px;
 }
 
@@ -29,7 +30,7 @@
 
 .entry__symbol--current-line {
   width: 1px;
-  background: var(--current-line-color)
+  background: var(--current-line-color);
 }
 
 .entry__text {

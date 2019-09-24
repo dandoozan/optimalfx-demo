@@ -1,6 +1,6 @@
 import React from 'react';
 import './Legend.css';
-import TradeMarker, { getWidth } from './Chart/TradeMarker';
+import TradeMarker, { getWidth, getHeight } from './Chart/TradeMarker';
 
 export default function Legend() {
   return (
@@ -15,7 +15,7 @@ export default function Legend() {
       </div>
       <div className="entry">
         <div className="entry__symbol entry__symbol--trade">
-          <svg width={getWidth()} height="100%">
+          <svg width={getWidth()} height={getHeight()} style={{ display: 'block' }}>
             <TradeMarker />
           </svg>
         </div>
