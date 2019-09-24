@@ -16,7 +16,7 @@ export default function Trades(props) {
   return (
     <div className="trades">
       <h5>Trades</h5>
-      <Table size="sm" hover>
+      <Table className="trades__table" size="sm" hover>
         <thead>
           <tr>
             <th>Time</th>
