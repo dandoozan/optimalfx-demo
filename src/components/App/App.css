@@ -1,5 +1,4 @@
 .app {
-  background: #eeddbf;
   display: grid;
   grid-template-columns: auto var(--main-content-width) auto;
   grid-template-areas:

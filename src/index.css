@@ -1,3 +1,7 @@
 :root {
   --main-content-width: 800px;
+  --current-line-color: red;
+  --trade-indicator-color: blue;
+  --base-pattern-color: hsl(0, 0%, 90%);
+  --similar-pattern-color: hsl(0, 0%, 95%);
 }

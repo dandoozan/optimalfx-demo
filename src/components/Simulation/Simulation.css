@@ -1,6 +1,5 @@
 .simulation {
   width: var(--main-content-width);
-  background: hsl(0, 46%, 74%);
   grid-area: simulation;
   display: grid;
   grid-template-columns: min-content;

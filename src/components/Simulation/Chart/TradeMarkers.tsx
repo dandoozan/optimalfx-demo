@@ -1,24 +1,20 @@
 import React from 'react';
-import './TradeMarkers.css';
+import TradeMarker from './TradeMarker';
 
 export default function TradeMarkers(props) {
   let { trades, xScale, yScale, focalTrade } = props;
   return (
     <g className="trade-markers">
       {trades.map(({ startIndex, startBar }) => {
-        let x = xScale(startBar.date);
-        let y = yScale(startBar.low) + 5;
-
-        let xDiff = 5;
-        let yDiff = 8;
-        let points = [[x, y], [x - xDiff, y + yDiff], [x + xDiff, y + yDiff]];
         return (
-          <polygon
-            key={startIndex}
-            className={`trade-marker${
-              focalTrade === startIndex ? ' trade-marker--focal' : ''
-            }`}
-            points={points.map(point => point.join(',')).join(' ')}
+          <TradeMarker
+            {...{
+              key: startIndex,
+              topMiddleX: xScale(startBar.date),
+              //add 5 so that the trade marker is a bit lower than the bar's "low"
+              topMiddleY: yScale(startBar.low) + 5,
+              isFocalTrade: focalTrade === startIndex,
+            }}
           />
         );
       })}

@@ -1,3 +1,38 @@
 .legend {
   grid-area: legend;
+  display: flex;
+  justify-content: start;
+  margin-left: 20px;
+  padding: 5px 0;
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+}
+
+.entry__symbol {
+  height: 20px;
+}
+
+.entry__symbol--pattern {
+  width: 10px;
+}
+
+.entry__symbol--base-pattern {
+  background: var(--base-pattern-color);
+}
+.entry__symbol--similar-pattern {
+  background: var(--similar-pattern-color);
+}
+
+.entry__symbol--current-line {
+  width: 1px;
+  background: var(--current-line-color)
+}
+
+.entry__text {
+  margin-left: 10px;
+  font-size: 0.7em;
 }
