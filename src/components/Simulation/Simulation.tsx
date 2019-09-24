@@ -32,7 +32,6 @@ export default class Simulation extends Component<Props, State> {
   yScale;
   chartWidth: number;
   chartHeight: number;
-  paddingTop: number;
   paddingBottom: number;
   barWidth: number;
 
@@ -43,13 +42,12 @@ export default class Simulation extends Component<Props, State> {
 
     this.chartWidth = 600;
     this.chartHeight = this.chartWidth / 2;
-    this.paddingTop = 20;
     this.paddingBottom = 50;
     this.barWidth = this.chartWidth / ohlcData.length;
     this.xScale = this.createXScale(ohlcData, this.chartWidth - this.barWidth);
     this.yScale = this.createYScale(
       ohlcData,
-      this.chartHeight - this.paddingTop - this.paddingBottom
+      this.chartHeight - this.paddingBottom
     );
 
     //event listeners bindings
