@@ -33,6 +33,7 @@ export default class Simulation extends Component<Props, State> {
   chartWidth: number;
   chartHeight: number;
   paddingBottom: number;
+  paddingRight: number;
   barWidth: number;
 
   constructor(props: Props) {
@@ -41,10 +42,11 @@ export default class Simulation extends Component<Props, State> {
     this.tradeIndicesOnChart = new Set();
 
     this.chartWidth = 600;
-    this.chartHeight = this.chartWidth / 2;
-    this.paddingBottom = 50;
+    this.chartHeight = (this.chartWidth * 3) / 5;
     this.barWidth = this.chartWidth / ohlcData.length;
-    this.xScale = this.createXScale(ohlcData, this.chartWidth - this.barWidth);
+    this.paddingBottom = 50;
+    this.paddingRight = this.barWidth;
+    this.xScale = this.createXScale(ohlcData, this.chartWidth - this.barWidth - this.paddingRight);
     this.yScale = this.createYScale(
       ohlcData,
       this.chartHeight - this.paddingBottom
