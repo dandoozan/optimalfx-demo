@@ -3,8 +3,7 @@ import { select, axisBottom } from 'd3';
 
 interface Props {
   xScale: any;
-  x: number;
-  y: number;
+  width: number;
 }
 
 export default class XAxis extends Component<Props> {
@@ -28,13 +27,11 @@ export default class XAxis extends Component<Props> {
   }
 
   render() {
-    let { x, y } = this.props;
+    let { width } = this.props;
     return (
-      <g
-        className="x-axis"
-        ref={this.xAxis}
-        transform={`translate(${x}, ${y})`}
-      ></g>
+      <svg className="x-axis" width={width} height="20">
+        <g ref={this.xAxis}></g>
+      </svg>
     );
   }
 }

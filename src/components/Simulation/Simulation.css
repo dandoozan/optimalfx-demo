@@ -5,7 +5,8 @@
   grid-template-columns: min-content;
   grid-template-areas:
 			"legend legend"
-			"chart trades"
+      "chart trades"
+      "xaxis ."
       "controls controls";
 }
 

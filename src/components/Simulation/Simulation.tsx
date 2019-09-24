@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { scaleTime, scaleLinear } from 'd3';
 import './Simulation.css';
 import Legend from './Legend';
 import ChartControls from './ChartControls';
@@ -8,6 +9,7 @@ import Trades from './Trades';
 //todo: think about where to put json data
 import ohlcData from '../../ohlc.json';
 import patterns from '../../patterns.json';
+import XAxis from './XAxis';
 
 interface Props {}
 interface State {
@@ -26,12 +28,31 @@ export default class Simulation extends Component<Props, State> {
     trades: [],
     focalTrade: -1,
   };
+  xScale;
+  yScale;
+  chartWidth: number;
+  chartHeight: number;
+  paddingTop: number;
+  paddingBottom: number;
+  barWidth: number;
 
   constructor(props: Props) {
     super(props);
 
     this.tradeIndicesOnChart = new Set();
 
+    this.chartWidth = 600;
+    this.chartHeight = this.chartWidth / 2;
+    this.paddingTop = 20;
+    this.paddingBottom = 50;
+    this.barWidth = this.chartWidth / ohlcData.length;
+    this.xScale = this.createXScale(ohlcData, this.chartWidth - this.barWidth);
+    this.yScale = this.createYScale(
+      ohlcData,
+      this.chartHeight - this.paddingTop - this.paddingBottom
+    );
+
+    //event listeners bindings
     this.onBarMouseOver = this.onBarMouseOver.bind(this);
     this.onBarMouseOut = this.onBarMouseOut.bind(this);
     this.onBarClick = this.onBarClick.bind(this);
@@ -40,6 +61,22 @@ export default class Simulation extends Component<Props, State> {
     this.onTradeClick = this.onTradeClick.bind(this);
     this.onReset = this.onReset.bind(this);
     this.onContinue = this.onContinue.bind(this);
+  }
+
+  createXScale(data, width) {
+    return scaleTime()
+      .domain([data[0].date, data[data.length - 1].date])
+      .range([0, width]);
+  }
+
+  createYScale(data, height) {
+    return scaleLinear()
+      .domain([
+        Math.min(...data.map(d => d.low)),
+        Math.max(...data.map(d => d.high)),
+      ])
+      .range([height, 0])
+      .nice();
   }
 
   run() {
@@ -157,6 +194,11 @@ export default class Simulation extends Component<Props, State> {
 
   render() {
     let {
+      chartWidth,
+      chartHeight,
+      xScale,
+      yScale,
+      barWidth,
       onBarMouseOver,
       onBarMouseOut,
       onBarClick,
@@ -173,7 +215,12 @@ export default class Simulation extends Component<Props, State> {
         <Legend />
         <Chart
           {...{
+            chartWidth,
+            chartHeight,
             ohlcData,
+            xScale,
+            yScale,
+            barWidth,
             simulationIndex,
             selectedIndex,
             pattern,
@@ -193,6 +240,7 @@ export default class Simulation extends Component<Props, State> {
             onTradeClick,
           }}
         />
+        <XAxis {...{ xScale, width: chartWidth }} />
         <ChartControls {...{ onContinue, onReset }} />
       </div>
     );
