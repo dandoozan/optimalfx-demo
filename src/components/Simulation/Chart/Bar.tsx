@@ -12,6 +12,7 @@ export default function Bar(props) {
     barWidth,
     xScale,
     yScale,
+    isCompleted,
     isCurrent,
     isSelected,
     isBase,
@@ -41,14 +42,20 @@ export default function Bar(props) {
         height="100%"
       ></rect>
       <line
-        className="bar__high-low-line"
+        className={`bar__high-low-line${
+          isCompleted ? ' bar__high-low-line--completed' : ''
+        }`}
         x1={x + barWidth / 2}
         y1={yScale(high)}
         x2={x + barWidth / 2}
         y2={yScale(low)}
       ></line>
       <rect
-        className={`bar__open-close-rect--${isUpBar ? 'up-bar' : 'down-bar'}`}
+        className={`bar__open-close-rect${
+          isCompleted
+            ? ` bar__open-close-rect--${isUpBar ? 'up-bar' : 'down-bar'}`
+            : ''
+        }`}
         x={x}
         y={isUpBar ? yScale(close) : yScale(open)}
         width={barWidth - 1} //subtract 1 so that there is visual spacing between the bars

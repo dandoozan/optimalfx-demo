@@ -1,3 +1,7 @@
+.bar {
+  --default-candlestick-color: hsl(0, 0%, 90%);
+}
+
 .bar__background-rect {
   fill: white;
 }
@@ -22,9 +26,15 @@
 }
 
 .bar__high-low-line {
+  stroke: var(--default-candlestick-color);
+}
+.bar__high-low-line--completed {
   stroke: black;
 }
 
+.bar__open-close-rect {
+  fill: var(--default-candlestick-color);
+}
 .bar__open-close-rect--up-bar {
   fill: green;
 }

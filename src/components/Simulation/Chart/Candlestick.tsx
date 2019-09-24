@@ -29,8 +29,9 @@ function Candlestick(props) {
             onBarMouseOver,
             onBarMouseOut,
             onBarClick,
-            isCurrent: simulationIndex === i,
-            isSelected: selectedIndex === i,
+            isCompleted: i <= simulationIndex,
+            isCurrent: i === simulationIndex,
+            isSelected: i === selectedIndex,
             isBase: pattern && base - barsBack < i && i <= base,
             isSimilar:
               pattern &&
