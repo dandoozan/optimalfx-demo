@@ -11,7 +11,7 @@ export default function Legend() {
       </div>
       <div className="entry">
         <div className="entry__symbol entry__symbol--pattern entry__symbol--similar-pattern"></div>
-        <div className="entry__text">Similar Pattern</div>
+        <div className="entry__text">Matching Pattern</div>
       </div>
       <div className="entry">
         <div className="entry__symbol entry__symbol--trade">
@@ -19,7 +19,7 @@ export default function Legend() {
             <TradeMarker />
           </svg>
         </div>
-        <div className="entry__text">Trade</div>
+        <div className="entry__text">Start of Trade</div>
       </div>
       <div className="entry">
         <div className="entry__symbol entry__symbol--current-line"></div>
