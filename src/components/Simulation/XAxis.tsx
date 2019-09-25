@@ -3,6 +3,7 @@ import { select, axisBottom } from 'd3';
 
 interface Props {
   xScale: any;
+  timeFormatter: any;
   width: number;
 }
 
@@ -23,7 +24,9 @@ export default class XAxis extends Component<Props> {
   }
 
   renderAxis() {
-    select(this.xAxis.current).call(axisBottom(this.props.xScale));
+    select(this.xAxis.current).call(
+      axisBottom(this.props.xScale).tickFormat(this.props.timeFormatter)
+    );
   }
 
   render() {

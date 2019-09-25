@@ -1,6 +1,5 @@
 import React from 'react';
 import './Trades.css';
-import { timeFormat } from 'd3';
 import { Table } from 'react-bootstrap';
 
 export default function Trades(props) {
@@ -10,8 +9,8 @@ export default function Trades(props) {
     onTradeMouseOver,
     onTradeMouseOut,
     onTradeClick,
+    timeFormatter
   } = props;
-  let timeFormatter = timeFormat('%I:%M');
 
   return (
     <div className="trades">

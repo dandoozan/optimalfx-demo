@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { scaleTime, scaleLinear } from 'd3';
+import { scaleTime, scaleLinear, utcFormat } from 'd3';
 import './Simulation.css';
 import Legend from './Legend';
 import ChartControls from './ChartControls';
@@ -30,6 +30,7 @@ export default class Simulation extends Component<Props, State> {
   };
   xScale;
   yScale;
+  timeFormatter: Function;
   chartWidth: number;
   chartHeight: number;
   paddingBottom: number;
@@ -46,11 +47,15 @@ export default class Simulation extends Component<Props, State> {
     this.barWidth = this.chartWidth / ohlcData.length;
     this.paddingBottom = 50;
     this.paddingRight = this.barWidth;
-    this.xScale = this.createXScale(ohlcData, this.chartWidth - this.barWidth - this.paddingRight);
+    this.xScale = this.createXScale(
+      ohlcData,
+      this.chartWidth - this.barWidth - this.paddingRight
+    );
     this.yScale = this.createYScale(
       ohlcData,
       this.chartHeight - this.paddingBottom
     );
+    this.timeFormatter = utcFormat('%H:%M');
 
     //event listeners bindings
     this.onBarMouseOver = this.onBarMouseOver.bind(this);
@@ -198,6 +203,7 @@ export default class Simulation extends Component<Props, State> {
       chartHeight,
       xScale,
       yScale,
+      timeFormatter,
       barWidth,
       onBarMouseOver,
       onBarMouseOut,
@@ -238,9 +244,10 @@ export default class Simulation extends Component<Props, State> {
             onTradeMouseOver,
             onTradeMouseOut,
             onTradeClick,
+            timeFormatter,
           }}
         />
-        <XAxis {...{ xScale, width: chartWidth }} />
+        <XAxis {...{ xScale, timeFormatter, width: chartWidth }} />
         <ChartControls {...{ onContinue, onReset }} />
       </div>
     );
