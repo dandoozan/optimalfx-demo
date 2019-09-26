@@ -1,6 +1,6 @@
 .trade-marker {
-  stroke: var(--trade-indicator-color);
-  fill: var(--trade-indicator-color);
+  stroke: var(--trade-color);
+  fill: var(--trade-color);
   stroke-width: 0;
 }
 .trade-marker--focal {

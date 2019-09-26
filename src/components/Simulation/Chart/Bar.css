@@ -49,6 +49,6 @@
   stroke-opacity: 0.5;
 }
 .bar--selected:not(.bar--current) .bar__right-line {
-  stroke: var(--trade-indicator-color);
+  stroke: var(--trade-color);
   stroke-dasharray: 4;
 }
