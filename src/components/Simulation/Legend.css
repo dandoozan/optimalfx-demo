@@ -1,15 +1,13 @@
 .legend {
   grid-area: legend;
   display: flex;
-  justify-content: flex-start;
-  margin-left: 30px;
-  padding: 5px 0;
+  justify-content: space-evenly;
+  padding-bottom: 4px;
 }
 
 .entry {
   display: flex;
   align-items: center;
-  margin-right: 65px;
 }
 
 .entry__symbol--pattern,
@@ -35,5 +33,5 @@
 
 .entry__text {
   margin-left: 10px;
-  font-size: 0.7em;
+  font-size: 0.65em;
 }
