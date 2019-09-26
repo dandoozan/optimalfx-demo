@@ -112,7 +112,6 @@ export default class Simulation extends Component<Props, State> {
         let newTrade = {
           ...patterns[simulationIndex].trade,
           startIndex,
-          startBar: ohlcData[startIndex],
         };
 
         this.tradeIndicesOnChart.add(startIndex);

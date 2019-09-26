@@ -37,7 +37,7 @@ export default function Chart(props) {
           barWidth,
         }}
       />
-      <TradeMarkers {...{ trades, xScale, yScale, focalTrade }} />
+      <TradeMarkers {...{ trades, ohlcData, xScale, yScale, focalTrade }} />
     </svg>
   );
 }

@@ -2,17 +2,23 @@ import React from 'react';
 import TradeMarker from './TradeMarker';
 
 export default function TradeMarkers(props) {
-  let { trades, xScale, yScale, focalTrade } = props;
+  let { trades, ohlcData, xScale, yScale, focalTrade } = props;
   return (
     <g className="trade-markers">
-      {trades.map(({ startIndex, startBar }) => {
+      {trades.map(({ startIndex }) => {
         return (
           <TradeMarker
             {...{
               key: startIndex,
-              topMiddleX: xScale(startBar.date),
-              //add 5 so that the trade marker is a bit lower than the bar's "low"
-              topMiddleY: yScale(startBar.low) + 5,
+              topMiddleX: xScale(ohlcData[startIndex].date),
+              //set the trade marker slightly under than lower of the two bars it sits between
+              topMiddleY:
+                yScale(
+                  Math.min(
+                    ohlcData[startIndex].low,
+                    ohlcData[startIndex - 1].low
+                  )
+                ) + 5,
               isFocalTrade: focalTrade === startIndex,
             }}
           />
