@@ -2,10 +2,19 @@ import React from 'react';
 import TradeMarker from './TradeMarker';
 
 export default function TradeMarkers(props) {
-  let { trades, ohlcData, xScale, yScale, focalTrade } = props;
+  let {
+    trades,
+    ohlcData,
+    xScale,
+    yScale,
+    focalTradeIndex,
+    selectedTradeIndex,
+  } = props;
   return (
     <g className="trade-markers">
       {trades.map(({ startIndex }) => {
+        let isFocal = focalTradeIndex === startIndex;
+        let isSelected = selectedTradeIndex === startIndex;
         return (
           <TradeMarker
             {...{
@@ -19,7 +28,8 @@ export default function TradeMarkers(props) {
                     ohlcData[startIndex - 1].low
                   )
                 ) + 5,
-              isFocalTrade: focalTrade === startIndex,
+              isFocal,
+              isBackground: !isSelected && !isFocal,
             }}
           />
         );

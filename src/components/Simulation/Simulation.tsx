@@ -16,7 +16,7 @@ interface State {
   simulationIndex: number;
   selectedIndex: number;
   trades: any[];
-  focalTrade: number;
+  focalTradeIndex: number;
 }
 
 export default class Simulation extends Component<Props, State> {
@@ -26,7 +26,7 @@ export default class Simulation extends Component<Props, State> {
     simulationIndex: -1,
     selectedIndex: -1,
     trades: [],
-    focalTrade: -1,
+    focalTradeIndex: -1,
   };
   xScale;
   yScale;
@@ -138,7 +138,7 @@ export default class Simulation extends Component<Props, State> {
     indicesThatCanTriggerFocalTrade.forEach(index => {
       if (this.tradeIndicesOnChart.has(index)) {
         this.setState({
-          focalTrade: index,
+          focalTradeIndex: index,
         });
       }
     });
@@ -146,9 +146,9 @@ export default class Simulation extends Component<Props, State> {
   onBarMouseOut(barIndex: number) {
     //only setState if barIndex is not -1 already (which it will
     //be most of the time) (to avoid doing unnecessary work)
-    if (this.state.focalTrade !== -1) {
+    if (this.state.focalTradeIndex !== -1) {
       this.setState({
-        focalTrade: -1,
+        focalTradeIndex: -1,
       });
     }
   }
@@ -169,12 +169,12 @@ export default class Simulation extends Component<Props, State> {
 
   onTradeMouseOver(tradeIndex: number) {
     this.setState({
-      focalTrade: tradeIndex,
+      focalTradeIndex: tradeIndex,
     });
   }
   onTradeMouseOut(tradeIndex: number) {
     this.setState({
-      focalTrade: -1,
+      focalTradeIndex: -1,
     });
   }
   onTradeClick(tradeIndex: number) {
@@ -213,7 +213,12 @@ export default class Simulation extends Component<Props, State> {
       onReset,
       onContinue,
     } = this;
-    let { simulationIndex, selectedIndex, trades, focalTrade } = this.state;
+    let {
+      simulationIndex,
+      selectedIndex,
+      trades,
+      focalTradeIndex,
+    } = this.state;
     let pattern = patterns[selectedIndex] || patterns[simulationIndex];
     return (
       <div className="simulation">
@@ -230,7 +235,7 @@ export default class Simulation extends Component<Props, State> {
             selectedIndex,
             pattern,
             trades,
-            focalTrade,
+            focalTradeIndex,
             onBarMouseOver,
             onBarMouseOut,
             onBarClick,

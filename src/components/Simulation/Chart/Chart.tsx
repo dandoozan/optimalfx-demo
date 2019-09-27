@@ -15,7 +15,7 @@ export default function Chart(props) {
     selectedIndex,
     pattern,
     trades,
-    focalTrade,
+    focalTradeIndex,
     onBarMouseOver,
     onBarMouseOut,
     onBarClick,
@@ -37,7 +37,16 @@ export default function Chart(props) {
           barWidth,
         }}
       />
-      <TradeMarkers {...{ trades, ohlcData, xScale, yScale, focalTrade }} />
+      <TradeMarkers
+        {...{
+          trades,
+          ohlcData,
+          xScale,
+          yScale,
+          focalTradeIndex,
+          selectedTradeIndex: selectedIndex + 1,
+        }}
+      />
     </svg>
   );
 }

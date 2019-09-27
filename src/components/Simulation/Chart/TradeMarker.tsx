@@ -12,7 +12,14 @@ export function getHeight() {
 }
 
 export default function TradeMarker(props) {
-  let { originX, originY, topMiddleX, topMiddleY, isFocalTrade } = props;
+  let {
+    originX,
+    originY,
+    topMiddleX,
+    topMiddleY,
+    isFocal,
+    isBackground,
+  } = props;
   let halfWidth = WIDTH / 2;
 
   if (originX === undefined) {
@@ -30,7 +37,9 @@ export default function TradeMarker(props) {
 
   return (
     <polygon
-      className={`trade-marker${isFocalTrade ? ' trade-marker--focal' : ''}`}
+      className={`trade-marker${isFocal ? ' trade-marker--focal' : ''}${
+        isBackground ? ' trade-marker--background' : ''
+      }`}
       points={points.map(point => point.join(',')).join(' ')}
     />
   );

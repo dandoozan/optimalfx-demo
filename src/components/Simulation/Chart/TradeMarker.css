@@ -6,3 +6,6 @@
 .trade-marker--focal {
   stroke-width: 2px;
 }
+.trade-marker--background {
+  fill: hsl(240, 100%, 85%); /* lighter blue */
+}
