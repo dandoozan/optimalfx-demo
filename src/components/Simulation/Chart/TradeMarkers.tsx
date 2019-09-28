@@ -29,7 +29,11 @@ export default function TradeMarkers(props) {
                   )
                 ) + 5,
               isFocal,
-              isBackground: !isSelected && !isFocal,
+              isSelected,
+              isBackground:
+                selectedTradeIndex > 0 &&
+                selectedTradeIndex !== startIndex &&
+                !isFocal,
             }}
           />
         );

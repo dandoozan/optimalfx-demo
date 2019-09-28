@@ -18,29 +18,41 @@ export default function TradeMarker(props) {
     topMiddleX,
     topMiddleY,
     isFocal,
+    isSelected,
     isBackground,
   } = props;
   let halfWidth = WIDTH / 2;
 
-  if (originX === undefined) {
-    originX = topMiddleX !== undefined ? topMiddleX - halfWidth : 0;
+  if (topMiddleX === undefined) {
+    topMiddleX = (originX || 0) + halfWidth;
   }
-  if (originY === undefined) {
-    originY = topMiddleY || 0;
+  if (topMiddleY === undefined) {
+    topMiddleY = originY || 0;
   }
 
-  let points = [
-    [originX + halfWidth, originY],
-    [originX, originY + HEIGHT],
-    [originX + WIDTH, originY + HEIGHT],
+  let polygonPoints = [
+    [topMiddleX, topMiddleY],
+    [topMiddleX - halfWidth, topMiddleY + HEIGHT],
+    [topMiddleX + halfWidth, topMiddleY + HEIGHT],
   ];
 
   return (
-    <polygon
-      className={`trade-marker${isFocal ? ' trade-marker--focal' : ''}${
-        isBackground ? ' trade-marker--background' : ''
-      }`}
-      points={points.map(point => point.join(',')).join(' ')}
-    />
+    <g>
+      {isSelected && (
+        <line
+          className="trade-marker__line"
+          x1={topMiddleX}
+          y1={0}
+          x2={topMiddleX}
+          y2="100%"
+        ></line>
+      )}
+      <polygon
+        className={`trade-marker${isFocal ? ' trade-marker--focal' : ''}${
+          isBackground ? ' trade-marker--dimmed' : ''
+        }`}
+        points={polygonPoints.map(point => point.join(',')).join(' ')}
+      />
+    </g>
   );
 }

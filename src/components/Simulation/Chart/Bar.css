@@ -41,14 +41,3 @@
 .bar__open-close-rect--down-bar {
   fill: darkred;
 }
-
-.bar--current .bar__right-line {
-  stroke: var(--current-line-color);
-}
-.bar--current:not(.bar--selected) .bar__right-line {
-  stroke-opacity: 0.5;
-}
-.bar--selected:not(.bar--current) .bar__right-line {
-  stroke: var(--trade-color);
-  stroke-dasharray: 4;
-}

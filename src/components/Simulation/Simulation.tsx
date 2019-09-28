@@ -15,8 +15,8 @@ interface Props {}
 interface State {
   simulationIndex: number;
   selectedIndex: number;
-  trades: any[];
   focalTradeIndex: number;
+  trades: any[];
 }
 
 export default class Simulation extends Component<Props, State> {
@@ -88,8 +88,7 @@ export default class Simulation extends Component<Props, State> {
     this.intrvl = window.setInterval(() => {
       if (this.state.simulationIndex < ohlcData.length - 1) {
         this.setState(({ simulationIndex }) => {
-          let nextIndex = simulationIndex + 1;
-          return { simulationIndex: nextIndex, selectedIndex: nextIndex };
+          return { simulationIndex: simulationIndex + 1 };
         });
       } else {
         clearInterval(this.intrvl);
@@ -156,13 +155,13 @@ export default class Simulation extends Component<Props, State> {
     let tradeIndex = barIndex + 1; //add 1 because the trade starts on the next bar
 
     //let either of the two bars surrounding the trade indicator
-    //trigger the focal trade
+    //select the trade
     let indicesThatCanTriggerSelection = [tradeIndex, tradeIndex - 1];
     indicesThatCanTriggerSelection.forEach(index => {
       if (this.tradeIndicesOnChart.has(index)) {
-        this.setState({
-          selectedIndex: index - 1,
-        });
+        this.setState(({ simulationIndex }) => ({
+          selectedIndex: index - 1 === simulationIndex ? -1 : index - 1,
+        }));
       }
     });
   }
@@ -180,9 +179,9 @@ export default class Simulation extends Component<Props, State> {
   onTradeClick(tradeIndex: number) {
     //subtract 1 because the "current bar" is the one right
     //before the one the trade starts at
-    this.setState({
-      selectedIndex: tradeIndex - 1,
-    });
+    this.setState(({ simulationIndex }) => ({
+      selectedIndex: tradeIndex - 1 === simulationIndex ? -1 : tradeIndex - 1,
+    }));
   }
   onReset(e) {
     clearInterval(this.intrvl);
@@ -193,7 +192,8 @@ export default class Simulation extends Component<Props, State> {
     );
   }
   onContinue(e) {
-    this.run();
+    clearInterval(this.intrvl);
+    this.setState({ selectedIndex: -1 }, this.run);
   }
 
   render() {

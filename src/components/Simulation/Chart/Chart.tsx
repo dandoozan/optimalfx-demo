@@ -2,6 +2,7 @@ import React from 'react';
 import './Chart.css';
 import Candlestick from './Candlestick';
 import TradeMarkers from './TradeMarkers';
+import NowMarker from './NowMarker';
 
 export default function Chart(props) {
   let {
@@ -36,6 +37,14 @@ export default function Chart(props) {
           yScale,
           barWidth,
         }}
+      />
+      <NowMarker
+        x={
+          ohlcData[simulationIndex]
+            ? xScale(ohlcData[simulationIndex].date) + barWidth
+            : 0
+        }
+        isCurrent={selectedIndex === -1}
       />
       <TradeMarkers
         {...{

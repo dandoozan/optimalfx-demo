@@ -13,8 +13,6 @@ export default function Bar(props) {
     xScale,
     yScale,
     isCompleted,
-    isCurrent,
-    isSelected,
     isBase,
     isSimilar,
     onBarMouseOver,
@@ -26,9 +24,7 @@ export default function Bar(props) {
 
   return (
     <g
-      className={`bar${isCurrent ? ' bar--current' : ''}${
-        isSelected ? ' bar--selected' : ''
-      }${isBase ? ' bar--base' : ''}${isSimilar ? ' bar--similar' : ''}`}
+      className={`bar${isBase ? ' bar--base' : ''}${isSimilar ? ' bar--similar' : ''}`}
       //todo: don't attach a click/mouseover/out listener if the bar is not one of the trade bars (to avoid doing unnecessary work)
       onClick={onBarClick.bind(null, index)}
       onMouseOver={onBarMouseOver.bind(null, index)}
@@ -63,14 +59,6 @@ export default function Bar(props) {
           isUpBar ? yScale(open) - yScale(close) : yScale(close) - yScale(open)
         }
       ></rect>
-      <line className="bar__left-line" x1={x} y1={0} x2={x} y2="100%"></line>
-      <line
-        className="bar__right-line"
-        x1={x + barWidth}
-        y1={0}
-        x2={x + barWidth}
-        y2="100%"
-      ></line>
     </g>
   );
 }

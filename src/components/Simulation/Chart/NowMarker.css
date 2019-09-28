@@ -1,0 +1,6 @@
+.now-marker__line {
+  stroke: var(--current-line-color);
+}
+.now-marker__line--dimmed {
+  stroke-opacity: 0.5;
+}
