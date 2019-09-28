@@ -264,7 +264,14 @@ export default class Simulation extends Component<Props, State> {
           }}
         />
         <XAxis {...{ xScale, timeFormatter, width: chartWidth }} />
-        <ChartControls {...{ onContinue, onReset, isRunning }} />
+        <ChartControls
+          {...{
+            onContinue,
+            onReset,
+            isRunning,
+            isFinished: simulationIndex === ohlcData.length - 1,
+          }}
+        />
       </div>
     );
   }

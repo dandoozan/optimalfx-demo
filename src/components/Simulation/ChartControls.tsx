@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import './ChartControls.css';
 
 export default function ChartControls(props) {
-  let { onReset, onContinue, isRunning } = props;
+  let { onReset, onContinue, isRunning, isFinished } = props;
   return (
     <div className="chart-controls">
       <Button
@@ -17,7 +17,7 @@ export default function ChartControls(props) {
         className="chart-controls__continue"
         size="lg"
         onClick={onContinue}
-        disabled={isRunning}
+        disabled={isRunning || isFinished}
       >
         Continue
       </Button>
