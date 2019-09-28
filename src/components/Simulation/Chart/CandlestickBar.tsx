@@ -1,7 +1,7 @@
 import React from 'react';
-import styles from './Bar.module.css';
+import styles from './CandlestickBar.module.css';
 
-export default function Bar(props) {
+export default function CandlestickBar(props) {
   let {
     date,
     open,
@@ -18,7 +18,7 @@ export default function Bar(props) {
 
   let classNames = [styles.bar];
   if (isCompleted) {
-    classNames.push(isUpBar ? styles.upBar : styles.downBar);
+    classNames.push(isUpBar ? styles.up : styles.down);
   }
 
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Chart.module.css';
-import Candlestick from './Candlestick';
+import CandlestickBars from './CandlestickBars';
 import TradeMarkers from './TradeMarkers';
 import NowMarker from './NowMarker';
 import BackgroundBars from './BackgroundBars';
@@ -34,7 +34,7 @@ export default function Chart(props) {
           onBarMouseOut,
           onBarClick,
         }}/>
-      <Candlestick
+      <CandlestickBars
         {...{
           ohlcData,
           simulationIndex,

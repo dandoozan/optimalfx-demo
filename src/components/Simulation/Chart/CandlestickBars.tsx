@@ -1,7 +1,7 @@
 import React from 'react';
-import Bar from './Bar';
+import CandlestickBar from './CandlestickBar';
 
-export default function Candlestick(props) {
+export default function CandlestickBars(props) {
   let {
     ohlcData,
     simulationIndex,
@@ -12,7 +12,7 @@ export default function Candlestick(props) {
   return (
     <g>
       {ohlcData.map((d, i) => (
-        <Bar
+        <CandlestickBar
           {...{
             key: i,
             ...d,

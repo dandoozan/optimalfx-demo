@@ -6,17 +6,17 @@
 .highLowLine {
   stroke: var(--default-candlestick-color);
 }
-.bar.upBar .highLowLine,
-.bar.downBar .highLowLine {
+.bar.up .highLowLine,
+.bar.down .highLowLine {
   stroke: black;
 }
 
 .openCloseRect {
   fill: var(--default-candlestick-color);
 }
-.bar.upBar .openCloseRect {
+.bar.up .openCloseRect {
   fill: green;
 }
-.bar.downBar .openCloseRect {
+.bar.down .openCloseRect {
   fill: darkred;
 }
