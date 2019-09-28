@@ -2,33 +2,34 @@
   --default-candlestick-color: hsl(0, 0%, 90%);
 }
 
-.backgroundRect{
+.backgroundRect {
   fill: white;
+  stroke: white;
 }
 
-.bar.base .backgroundRect{
+.bar.base .backgroundRect {
   fill: var(--base-pattern-color);
   stroke: var(--base-pattern-color);
 }
-.bar.similar .backgroundRect{
+.bar.similar .backgroundRect {
   fill: var(--similar-pattern-color);
   stroke: var(--similar-pattern-color);
 }
 
-.bar:hover .backgroundRect{
+.bar:hover .backgroundRect {
   fill: hsl(0, 0%, 95%);
 }
-.bar.base:hover .backgroundRect{
+.bar.base:hover .backgroundRect {
   fill: hsl(0, 0%, 85%);
 }
-.bar.similar:hover .backgroundRect{
+.bar.similar:hover .backgroundRect {
   fill: hsl(0, 0%, 90%);
 }
 
 .highLowLine {
   stroke: var(--default-candlestick-color);
 }
-.bar.upBar .highLowLine ,
+.bar.upBar .highLowLine,
 .bar.downBar .highLowLine {
   stroke: black;
 }

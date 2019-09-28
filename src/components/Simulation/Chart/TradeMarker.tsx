@@ -35,6 +35,13 @@ export default function TradeMarker(props) {
     [topMiddleX - halfWidth, topMiddleY + HEIGHT],
     [topMiddleX + halfWidth, topMiddleY + HEIGHT],
   ];
+  let polygonClassNames = [styles.tradeMarker];
+  if (isFocal) {
+    polygonClassNames.push(styles.focal);
+  }
+  if (isBackground) {
+    polygonClassNames.push(styles.dimmed);
+  }
 
   return (
     <g>
@@ -48,9 +55,7 @@ export default function TradeMarker(props) {
         ></line>
       )}
       <polygon
-        className={`${styles.tradeMarker}${isFocal ? ` ${styles.focal}` : ''}${
-          isBackground ? ` ${styles.dimmed}` : ''
-        }`}
+        className={polygonClassNames.join(' ')}
         points={polygonPoints.map(point => point.join(',')).join(' ')}
       />
     </g>

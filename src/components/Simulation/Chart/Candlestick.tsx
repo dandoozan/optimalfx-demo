@@ -15,7 +15,7 @@ function Candlestick(props) {
   } = props;
   let { barsBack, base, similar } = pattern || {};
   return (
-    <g className="candlestick">
+    <g>
       {ohlcData.map((d, i) => (
         <Bar
           {...{

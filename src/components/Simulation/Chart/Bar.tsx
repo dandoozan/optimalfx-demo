@@ -22,13 +22,19 @@ export default function Bar(props) {
   let x = xScale(date);
   let isUpBar = close > open;
 
+  let classNames = [styles.bar];
+  if (isCompleted) {
+    classNames.push(isUpBar ? styles.upBar : styles.downBar);
+  }
+  if (isBase) {
+    classNames.push(styles.base);
+  } else if (isSimilar) {
+    classNames.push(styles.similar);
+  }
+
   return (
     <g
-      className={`${styles.bar}${
-        isCompleted ? (isUpBar ? ` ${styles.upBar}` : ` ${styles.downBar}`) : ''
-      }${isBase ? ` ${styles.base}` : ''}${
-        isSimilar ? ` ${styles.similar}` : ''
-      }`}
+      className={classNames.join(' ')}
       //todo: don't attach a click/mouseover/out listener if the bar is not one of the trade bars (to avoid doing unnecessary work)
       onClick={onBarClick.bind(null, index)}
       onMouseOver={onBarMouseOver.bind(null, index)}

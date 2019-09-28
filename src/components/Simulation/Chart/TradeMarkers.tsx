@@ -11,7 +11,7 @@ export default function TradeMarkers(props) {
     selectedTradeIndex,
   } = props;
   return (
-    <g className="trade-markers">
+    <g>
       {trades.map(({ startIndex }) => {
         let isFocal = focalTradeIndex === startIndex;
         let isSelected = selectedTradeIndex === startIndex;
