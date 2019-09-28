@@ -3,6 +3,7 @@ import styles from './Chart.module.css';
 import Candlestick from './Candlestick';
 import TradeMarkers from './TradeMarkers';
 import NowMarker from './NowMarker';
+import BackgroundBars from './BackgroundBars';
 
 export default function Chart(props) {
   let {
@@ -24,15 +25,19 @@ export default function Chart(props) {
 
   return (
     <svg className={styles.chart} width={chartWidth} height={chartHeight}>
-      <Candlestick
-        {...{
+      <BackgroundBars {...{
           ohlcData,
-          simulationIndex,
-          selectedIndex,
+          xScale,
+          barWidth,
           pattern,
           onBarMouseOver,
           onBarMouseOut,
           onBarClick,
+        }}/>
+      <Candlestick
+        {...{
+          ohlcData,
+          simulationIndex,
           xScale,
           yScale,
           barWidth,
