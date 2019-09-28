@@ -13,6 +13,7 @@ import XAxis from './XAxis';
 
 interface Props {}
 interface State {
+  isRunning: boolean;
   simulationIndex: number;
   selectedIndex: number;
   focalTradeIndex: number;
@@ -23,6 +24,7 @@ export default class Simulation extends Component<Props, State> {
   intrvl: number | undefined;
   tradeIndicesOnChart: Set<number>;
   state: State = {
+    isRunning: false,
     simulationIndex: -1,
     selectedIndex: -1,
     trades: [],
@@ -85,15 +87,24 @@ export default class Simulation extends Component<Props, State> {
   }
 
   run() {
-    this.intrvl = window.setInterval(() => {
-      if (this.state.simulationIndex < ohlcData.length - 1) {
-        this.setState(({ simulationIndex }) => {
-          return { simulationIndex: simulationIndex + 1 };
-        });
-      } else {
-        clearInterval(this.intrvl);
-      }
-    }, 20);
+    this.setState(
+      { isRunning: true },
+      () =>
+        (this.intrvl = window.setInterval(() => {
+          if (this.state.simulationIndex < ohlcData.length - 1) {
+            this.setState(({ simulationIndex }) => {
+              return { simulationIndex: simulationIndex + 1 };
+            });
+          } else {
+            this.pause();
+          }
+        }, 20))
+    );
+  }
+
+  pause() {
+    clearInterval(this.intrvl);
+    this.setState({ isRunning: false });
   }
 
   componentDidMount() {
@@ -117,15 +128,15 @@ export default class Simulation extends Component<Props, State> {
         this.setState(({ trades }) => ({
           trades: [...trades, newTrade],
         }));
-      }
 
-      //stop the simulation
-      clearInterval(this.intrvl);
+        //stop the simulation
+        this.pause();
+      }
     }
   }
 
   componentWillUnmount() {
-    clearInterval(this.intrvl);
+    this.pause();
   }
 
   onBarMouseOver(barIndex: number) {
@@ -184,7 +195,7 @@ export default class Simulation extends Component<Props, State> {
     }));
   }
   onReset(e) {
-    clearInterval(this.intrvl);
+    this.pause();
     this.tradeIndicesOnChart.clear();
     this.setState(
       { simulationIndex: -1, selectedIndex: -1, trades: [] },
@@ -192,7 +203,7 @@ export default class Simulation extends Component<Props, State> {
     );
   }
   onContinue(e) {
-    clearInterval(this.intrvl);
+    this.pause();
     this.setState({ selectedIndex: -1 }, this.run);
   }
 
@@ -214,6 +225,7 @@ export default class Simulation extends Component<Props, State> {
       onContinue,
     } = this;
     let {
+      isRunning,
       simulationIndex,
       selectedIndex,
       trades,
@@ -252,7 +264,7 @@ export default class Simulation extends Component<Props, State> {
           }}
         />
         <XAxis {...{ xScale, timeFormatter, width: chartWidth }} />
-        <ChartControls {...{ onContinue, onReset }} />
+        <ChartControls {...{ onContinue, onReset, isRunning }} />
       </div>
     );
   }
