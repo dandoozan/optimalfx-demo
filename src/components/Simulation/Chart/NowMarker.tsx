@@ -1,13 +1,13 @@
 import React from 'react';
-import './NowMarker.css';
+import styles from './NowMarker.module.css';
 
 export default function NowMarker(props) {
   let { x, dimmed } = props;
   return (
-    <g className="now-marker">
+    <g className={styles.nowMarker}>
       <line
-        className={`now-marker__line${
-          dimmed ? ' now-marker__line--dimmed' : ''
+        className={`${styles.nowLine}${
+          dimmed ? ` ${styles.dimmed}` : ''
         }`}
         x1={x}
         y1={0}

@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
+import styles from './App.module.css';
 import Header from './Header';
 import Simulation from '../Simulation/Simulation';
 import Description from './Description';
 
 function App() {
   return (
-    <div className="app">
+    <div className={styles.app}>
       <Header />
       <Description />
       <Simulation />

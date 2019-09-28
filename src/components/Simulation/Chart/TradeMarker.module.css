@@ -1,16 +1,16 @@
-.trade-marker {
+.tradeMarker {
   stroke: var(--trade-color);
   fill: var(--trade-color);
   stroke-width: 0;
   pointer-events: none;
 }
-.trade-marker--focal {
+.tradeMarker.focal {
   stroke-width: 2px;
 }
-.trade-marker--dimmed {
+.tradeMarker.dimmed {
   fill: hsl(240, 100%, 85%); /* lighter blue */
 }
-.trade-marker__line {
+.tradeLine {
   stroke: var(--trade-color);
   stroke-dasharray: 4;
 }

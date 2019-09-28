@@ -1,4 +1,4 @@
-.chart-controls {
+.chartControls {
   grid-area: controls;
   display: flex;
   justify-content: center;
@@ -6,6 +6,6 @@
   margin-top: 15px;
 }
 
-.chart-controls__continue {
+.continueButton {
   margin-left: 10px;
 }

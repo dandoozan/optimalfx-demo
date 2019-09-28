@@ -1,5 +1,5 @@
 import React from 'react';
-import './Chart.css';
+import styles from './Chart.module.css';
 import Candlestick from './Candlestick';
 import TradeMarkers from './TradeMarkers';
 import NowMarker from './NowMarker';
@@ -23,7 +23,7 @@ export default function Chart(props) {
   } = props;
 
   return (
-    <svg className="chart" width={chartWidth} height={chartHeight}>
+    <svg className={styles.chart} width={chartWidth} height={chartHeight}>
       <Candlestick
         {...{
           ohlcData,

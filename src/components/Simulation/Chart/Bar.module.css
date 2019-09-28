@@ -2,42 +2,43 @@
   --default-candlestick-color: hsl(0, 0%, 90%);
 }
 
-.bar__background-rect {
+.backgroundRect{
   fill: white;
 }
 
-.bar--base .bar__background-rect {
+.bar.base .backgroundRect{
   fill: var(--base-pattern-color);
   stroke: var(--base-pattern-color);
 }
-.bar--similar .bar__background-rect {
+.bar.similar .backgroundRect{
   fill: var(--similar-pattern-color);
   stroke: var(--similar-pattern-color);
 }
 
-.bar:hover .bar__background-rect {
+.bar:hover .backgroundRect{
   fill: hsl(0, 0%, 95%);
 }
-.bar--base:hover .bar__background-rect {
+.bar.base:hover .backgroundRect{
   fill: hsl(0, 0%, 85%);
 }
-.bar--similar:hover .bar__background-rect {
+.bar.similar:hover .backgroundRect{
   fill: hsl(0, 0%, 90%);
 }
 
-.bar__high-low-line {
+.highLowLine {
   stroke: var(--default-candlestick-color);
 }
-.bar__high-low-line--completed {
+.bar.upBar .highLowLine ,
+.bar.downBar .highLowLine {
   stroke: black;
 }
 
-.bar__open-close-rect {
+.openCloseRect {
   fill: var(--default-candlestick-color);
 }
-.bar__open-close-rect--up-bar {
+.bar.upBar .openCloseRect {
   fill: green;
 }
-.bar__open-close-rect--down-bar {
+.bar.downBar .openCloseRect {
   fill: darkred;
 }

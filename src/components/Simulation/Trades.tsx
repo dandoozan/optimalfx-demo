@@ -1,5 +1,5 @@
 import React from 'react';
-import './Trades.css';
+import styles from './Trades.module.css';
 import { Table } from 'react-bootstrap';
 
 export default function Trades(props) {
@@ -9,13 +9,13 @@ export default function Trades(props) {
     onTradeMouseOver,
     onTradeMouseOut,
     onTradeClick,
-    timeFormatter
+    timeFormatter,
   } = props;
 
   return (
-    <div className="trades">
+    <div className={styles.trades}>
       <h5>Trades</h5>
-      <Table className="trades__table" size="sm" hover>
+      <Table className={styles.tradesTable} size="sm" hover>
         <thead>
           <tr>
             <th>Time</th>

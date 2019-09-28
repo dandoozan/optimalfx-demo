@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { select, axisBottom } from 'd3';
+import styles from './XAxis.module.css';
 
 interface Props {
   xScale: any;
@@ -32,7 +33,7 @@ export default class XAxis extends Component<Props> {
   render() {
     let { width } = this.props;
     return (
-      <svg className="x-axis" width={width} height="20">
+      <svg className={styles.xAxis} width={width} height="20">
         <g ref={this.xAxis}></g>
       </svg>
     );

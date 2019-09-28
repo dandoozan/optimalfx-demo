@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { scaleTime, scaleLinear, utcFormat } from 'd3';
-import './Simulation.css';
+import styles from './Simulation.module.css';
 import Legend from './Legend';
 import ChartControls from './ChartControls';
 import Chart from './Chart/Chart';
@@ -233,7 +233,7 @@ export default class Simulation extends Component<Props, State> {
     } = this.state;
     let pattern = patterns[selectedIndex] || patterns[simulationIndex];
     return (
-      <div className="simulation">
+      <div className={styles.simulation}>
         <Legend />
         <Chart
           {...{

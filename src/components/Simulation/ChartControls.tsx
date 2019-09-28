@@ -1,20 +1,20 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import './ChartControls.css';
+import styles from './ChartControls.module.css';
 
 export default function ChartControls(props) {
   let { onReset, onContinue, isRunning, isFinished } = props;
   return (
-    <div className="chart-controls">
+    <div className={styles.chartControls}>
       <Button
-        className="chart-controls__reset"
+        className={styles.resetButton}
         variant="secondary"
         onClick={onReset}
       >
         Reset
       </Button>
       <Button
-        className="chart-controls__continue"
+        className={styles.continueButton}
         size="lg"
         onClick={onContinue}
         disabled={isRunning || isFinished}

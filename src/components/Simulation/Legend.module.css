@@ -10,28 +10,28 @@
   align-items: center;
 }
 
-.entry__symbol--pattern,
-.entry__symbol--current-line {
+.entry .symbol.pattern,
+.entry .symbol.currentLine {
   height: 20px;
 }
 
-.entry__symbol--pattern {
+.entry .symbol.pattern {
   width: 10px;
 }
 
-.entry__symbol--base-pattern {
+.entry .symbol.pattern.base {
   background: var(--base-pattern-color);
 }
-.entry__symbol--similar-pattern {
+.entry .symbol.pattern.similar {
   background: var(--similar-pattern-color);
 }
 
-.entry__symbol--current-line {
+.entry .symbol.currentLine {
   width: 1px;
   background: var(--current-line-color);
 }
 
-.entry__text {
+.entry .text {
   margin-left: 10px;
   font-size: 0.65em;
 }

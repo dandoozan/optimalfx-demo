@@ -1,5 +1,5 @@
 import React from 'react';
-import './TradeMarker.css';
+import styles from './TradeMarker.module.css';
 
 const WIDTH = 12;
 const HEIGHT = 10;
@@ -40,7 +40,7 @@ export default function TradeMarker(props) {
     <g>
       {isSelected && (
         <line
-          className="trade-marker__line"
+          className={styles.tradeLine}
           x1={topMiddleX}
           y1={0}
           x2={topMiddleX}
@@ -48,8 +48,8 @@ export default function TradeMarker(props) {
         ></line>
       )}
       <polygon
-        className={`trade-marker${isFocal ? ' trade-marker--focal' : ''}${
-          isBackground ? ' trade-marker--dimmed' : ''
+        className={`${styles.tradeMarker}${isFocal ? ` ${styles.focal}` : ''}${
+          isBackground ? ` ${styles.dimmed}` : ''
         }`}
         points={polygonPoints.map(point => point.join(',')).join(' ')}
       />

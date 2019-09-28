@@ -1,29 +1,37 @@
 import React from 'react';
-import './Legend.css';
+import styles from './Legend.module.css';
 import TradeMarker, { getWidth, getHeight } from './Chart/TradeMarker';
 
 export default function Legend() {
   return (
-    <div className="legend">
-      <div className="entry">
-        <div className="entry__symbol entry__symbol--pattern entry__symbol--base-pattern"></div>
-        <div className="entry__text">Base Pattern</div>
+    <div className={styles.legend}>
+      <div className={styles.entry}>
+        <div
+          className={`${styles.symbol} ${styles.pattern} ${styles.base}`}
+        ></div>
+        <div className={styles.text}>Base Pattern</div>
       </div>
-      <div className="entry">
-        <div className="entry__symbol entry__symbol--pattern entry__symbol--similar-pattern"></div>
-        <div className="entry__text">Matching Pattern</div>
+      <div className={styles.entry}>
+        <div
+          className={`${styles.symbol} ${styles.pattern} ${styles.similar}`}
+        ></div>
+        <div className={styles.text}>Matching Pattern</div>
       </div>
-      <div className="entry">
-        <div className="entry__symbol entry__symbol--trade">
-          <svg width={getWidth()} height={getHeight()} style={{ display: 'block' }}>
+      <div className={styles.entry}>
+        <div className={`${styles.symbol}`}>
+          <svg
+            width={getWidth()}
+            height={getHeight()}
+            style={{ display: 'block' }}
+          >
             <TradeMarker />
           </svg>
         </div>
-        <div className="entry__text">Start of Trade</div>
+        <div className={styles.text}>Start of Trade</div>
       </div>
-      <div className="entry">
-        <div className="entry__symbol entry__symbol--current-line"></div>
-        <div className="entry__text">Current time (in simulation)</div>
+      <div className={styles.entry}>
+        <div className={`${styles.symbol} ${styles.currentLine}`}></div>
+        <div className={styles.text}>Current time (in simulation)</div>
       </div>
     </div>
   );

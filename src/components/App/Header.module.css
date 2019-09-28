@@ -5,7 +5,7 @@
   justify-content: center;
   border-bottom: 1px solid hsl(0, 0%, 20%);
 }
-.header__inner {
+.innerHeader {
   width: var(--main-content-width);
   padding-top: 50px;
 }

@@ -1,7 +1,7 @@
-.now-marker__line {
+.nowLine {
   stroke: var(--current-line-color);
   pointer-events: none;
 }
-.now-marker__line--dimmed {
+.nowLine.dimmed {
   stroke-opacity: 0.4;
 }
