@@ -2,6 +2,7 @@
   stroke: var(--trade-color);
   fill: var(--trade-color);
   stroke-width: 0;
+  pointer-events: none;
 }
 .trade-marker--focal {
   stroke-width: 2px;
