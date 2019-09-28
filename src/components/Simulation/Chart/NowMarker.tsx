@@ -2,12 +2,12 @@ import React from 'react';
 import './NowMarker.css';
 
 export default function NowMarker(props) {
-  let { x, isCurrent } = props;
+  let { x, dimmed } = props;
   return (
     <g className="now-marker">
       <line
         className={`now-marker__line${
-          !isCurrent ? ' now-marker__line--dimmed' : ''
+          dimmed ? ' now-marker__line--dimmed' : ''
         }`}
         x1={x}
         y1={0}

@@ -44,7 +44,7 @@ export default function Chart(props) {
             ? xScale(ohlcData[simulationIndex].date) + barWidth
             : 0
         }
-        isCurrent={selectedIndex === -1}
+        dimmed={selectedIndex > -1 || simulationIndex === ohlcData.length - 1}
       />
       <TradeMarkers
         {...{
