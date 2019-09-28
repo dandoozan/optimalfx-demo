@@ -1,0 +1,5 @@
+.gridLine {
+  stroke: hsl(0, 0%, 90%);
+  stroke-dasharray: 4;
+  pointer-events: none;
+}

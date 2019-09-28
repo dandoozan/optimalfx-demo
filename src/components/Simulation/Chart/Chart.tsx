@@ -4,6 +4,7 @@ import CandlestickBars from './CandlestickBars';
 import TradeMarkers from './TradeMarkers';
 import NowMarker from './NowMarker';
 import BackgroundBars from './BackgroundBars';
+import Grid from './Grid';
 
 export default function Chart(props) {
   let {
@@ -25,7 +26,8 @@ export default function Chart(props) {
 
   return (
     <svg className={styles.chart} width={chartWidth} height={chartHeight}>
-      <BackgroundBars {...{
+      <BackgroundBars
+        {...{
           ohlcData,
           xScale,
           barWidth,
@@ -33,7 +35,9 @@ export default function Chart(props) {
           onBarMouseOver,
           onBarMouseOut,
           onBarClick,
-        }}/>
+        }}
+      />
+      <Grid {...{ chartWidth, chartHeight }} />
       <CandlestickBars
         {...{
           ohlcData,

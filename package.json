@@ -5,11 +5,13 @@
   "dependencies": {
     "@types/d3": "^5.7.2",
     "@types/jest": "^24.0.18",
+    "@types/lodash": "^4.14.141",
     "@types/node": "^12.7.5",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "bootstrap": "^4.3.1",
     "d3": "^5.12.0",
+    "lodash": "^4.17.15",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.9.0",
