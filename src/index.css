@@ -1,7 +1,8 @@
 :root {
   --main-content-width: 775px;
   --current-line-color: red;
-  --trade-color: blue;
+  --trade-color: hsl(240, 100%, 50%); /* blue */
+  --trade-color-dimmed: hsl(240, 100%, 85%); /* lighter blue */
   --base-pattern-color: hsl(0, 0%, 90%);
   --similar-pattern-color: hsl(0, 0%, 95%);
 }

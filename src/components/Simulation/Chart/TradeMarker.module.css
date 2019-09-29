@@ -8,7 +8,7 @@
   stroke-width: 2px;
 }
 .tradeMarker.dimmed {
-  fill: hsl(240, 100%, 85%); /* lighter blue */
+  fill: var(--trade-color-dimmed);
 }
 .tradeLine {
   stroke: var(--trade-color);
