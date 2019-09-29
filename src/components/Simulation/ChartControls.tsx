@@ -1,6 +1,7 @@
 import React from 'react';
-import Button from 'react-bootstrap/Button';
 import styles from './ChartControls.module.css';
+import Button from 'react-bootstrap/Button';
+import ReplayIcon from '@material-ui/icons/Replay';
 
 export default function ChartControls(props) {
   let { onReset, onContinue, isRunning, isFinished } = props;
@@ -11,7 +12,7 @@ export default function ChartControls(props) {
         variant="secondary"
         onClick={onReset}
       >
-        Reset
+        <ReplayIcon /> Reset
       </Button>
       <Button
         className={styles.continueButton}
