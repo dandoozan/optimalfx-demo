@@ -2,7 +2,8 @@
   grid-area: legend;
   display: flex;
   justify-content: space-evenly;
-  padding-bottom: 4px;
+  font-size: 0.65rem;
+  padding-bottom: 0.5em;
 }
 
 .entry {
@@ -12,11 +13,11 @@
 
 .entry .symbol.pattern,
 .entry .symbol.currentLine {
-  height: 20px;
+  height: 2em;
 }
 
 .entry .symbol.pattern {
-  width: 10px;
+  width: 1em;
 }
 
 .entry .symbol.pattern.base {
@@ -32,6 +33,5 @@
 }
 
 .entry .text {
-  margin-left: 10px;
-  font-size: 0.65em;
+  margin-left: 1em;
 }

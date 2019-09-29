@@ -7,5 +7,7 @@
 }
 .innerHeader {
   width: var(--main-content-width);
-  padding-top: 50px;
+}
+.text {
+  margin-top: 1em;
 }

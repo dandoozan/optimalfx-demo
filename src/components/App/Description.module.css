@@ -1,8 +1,8 @@
 .description {
   grid-area: desc;
-  margin: 30px 0 15px;
+  margin: 2em 0 1em;
 }
 
 .paragraph {
-  margin-bottom: 35px;
+  margin-bottom: 2em;
 }
