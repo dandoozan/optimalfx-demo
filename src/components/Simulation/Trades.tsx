@@ -26,6 +26,7 @@ export default function Trades(props) {
           {trades.map(({ startIndex, direction }) => (
             <tr
               key={startIndex}
+              className={styles.row}
               onMouseOver={onTradeMouseOver.bind(null, startIndex)}
               onMouseOut={onTradeMouseOut.bind(null, startIndex)}
               onClick={onTradeClick.bind(null, startIndex)}

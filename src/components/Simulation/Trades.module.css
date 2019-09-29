@@ -10,3 +10,7 @@
 .tradesTable {
   font-size: 0.95em;
 }
+
+.row {
+  cursor: default;
+}
