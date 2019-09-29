@@ -9,7 +9,7 @@ export default function ChartControls(props) {
     <div className={styles.chartControls}>
       <Button
         className={styles.resetButton}
-        variant="secondary"
+        variant="outline-dark"
         onClick={onReset}
       >
         <ReplayIcon /> Reset

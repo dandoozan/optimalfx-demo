@@ -6,6 +6,13 @@
   margin-top: 1em;
 }
 
+.button {
+  padding: 0.5em 1em;
+}
+.resetButton {
+  composes: button;
+}
 .continueButton {
+  composes: button;
   margin-left: 1em;
 }
