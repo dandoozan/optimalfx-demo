@@ -98,7 +98,7 @@ export default class Simulation extends Component<Props, State> {
           } else {
             this.pause();
           }
-        }, 20))
+        }, 25))
     );
   }
 
