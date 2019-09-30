@@ -61,6 +61,7 @@ export default function Chart(props) {
           ohlcData,
           xScale,
           yScale,
+          currentTradeIndex: simulationIndex + 1,
           focalTradeIndex,
           selectedTradeIndex: selectedIndex + 1,
         }}

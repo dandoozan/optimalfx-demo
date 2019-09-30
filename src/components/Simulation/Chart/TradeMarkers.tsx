@@ -7,6 +7,7 @@ export default function TradeMarkers(props) {
     ohlcData,
     xScale,
     yScale,
+    currentTradeIndex,
     focalTradeIndex,
     selectedTradeIndex,
   } = props;
@@ -33,10 +34,13 @@ export default function TradeMarkers(props) {
 
               //this trade marker is background if...
               isBackground:
+                !isFocal &&
                 //1) another trade marker is selected
-                (selectedTradeIndex > 0 && !isSelected) ||
-                //2) OR I'm not selected AND another trade marker is focal
-                (!isSelected && focalTradeIndex > 0 && !isFocal),
+                ((selectedTradeIndex > 0 && !isSelected) ||
+                  //2) OR I'm not selected AND a trade marker other than the current one is focal
+                  (!isSelected &&
+                    focalTradeIndex > 0 &&
+                    focalTradeIndex !== currentTradeIndex)),
             }}
           />
         );
