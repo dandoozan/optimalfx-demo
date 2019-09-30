@@ -9,6 +9,7 @@
 }
 .tradeMarker.dimmed {
   fill: var(--trade-color-dimmed);
+  stroke: var(--trade-color-dimmed);
 }
 .tradeLine {
   stroke: var(--trade-color);
