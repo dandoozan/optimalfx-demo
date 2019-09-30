@@ -12,14 +12,30 @@ export default function Grid(props) {
 
   return (
     <g className={styles.grid}>
-      {//add vertical lines
-      range(verticalLineStep, chartWidth, verticalLineStep).map(i => (
-        <line className={styles.gridLine} x1={i} y1={0} x2={i} y2="100%" />
-      ))}
-      {//add horizontal lines
-      range(horizontalLineStep, chartHeight, horizontalLineStep).map(i => (
-        <line className={styles.gridLine} x1={0} y1={i} x2="100%" y2={i} />
-      ))}
+      <g className={styles.verticalGridLines}>
+        {range(verticalLineStep, chartWidth, verticalLineStep).map(i => (
+          <line
+            key={i}
+            className={styles.gridLine}
+            x1={i}
+            y1={0}
+            x2={i}
+            y2="100%"
+          />
+        ))}
+      </g>
+      <g className={styles.horizontalGridLines}>
+        {range(horizontalLineStep, chartHeight, horizontalLineStep).map(i => (
+          <line
+            key={i}
+            className={styles.gridLine}
+            x1={0}
+            y1={i}
+            x2="100%"
+            y2={i}
+          />
+        ))}
+      </g>
     </g>
   );
 }
