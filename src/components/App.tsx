@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './App.module.css';
 import Header from './Header';
-import Simulation from '../Simulation/Simulation';
+import Simulation from './Simulation/Simulation';
 import Description from './Description';
 
 function App() {
