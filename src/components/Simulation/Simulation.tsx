@@ -2,14 +2,12 @@ import React, { Component } from 'react';
 import { scaleTime, scaleLinear, utcFormat } from 'd3';
 import styles from './Simulation.module.css';
 import Legend from './Legend';
-import ChartControls from './ChartControls';
 import Chart from './Chart/Chart';
 import Trades from './Trades';
-
-//todo: think about where to put json data
-import ohlcData from '../../ohlc.json';
-import patterns from '../../patterns.json';
 import XAxis from './XAxis';
+import ChartControls from './ChartControls';
+import ohlcData from '../../data/ohlc.json';
+import patterns from '../../data/patterns.json';
 
 interface Props {}
 interface State {
