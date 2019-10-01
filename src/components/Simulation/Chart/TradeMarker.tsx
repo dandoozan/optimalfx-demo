@@ -20,6 +20,7 @@ export default function TradeMarker(props) {
     isFocal,
     isSelected,
     isBackground,
+    tradeNumber,
   } = props;
   let halfWidth = WIDTH / 2;
 
@@ -48,6 +49,7 @@ export default function TradeMarker(props) {
       {isSelected && (
         <line
           className={styles.tradeLine}
+          data-testid={`trade-line-${tradeNumber}`}
           x1={topMiddleX}
           y1={0}
           x2={topMiddleX}

@@ -13,13 +13,14 @@ export default function TradeMarkers(props) {
   } = props;
   return (
     <g>
-      {trades.map(({ startIndex }) => {
+      {trades.map(({ startIndex }, i) => {
         let isFocal = focalTradeIndex === startIndex;
         let isSelected = selectedTradeIndex === startIndex;
         return (
           <TradeMarker
             {...{
               key: startIndex,
+              tradeNumber: i + 1,
               topMiddleX: xScale(ohlcData[startIndex].date),
               //set the trade marker slightly under than lower of the two bars it sits between
               topMiddleY:

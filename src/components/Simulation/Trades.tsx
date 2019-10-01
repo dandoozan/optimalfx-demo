@@ -23,9 +23,10 @@ export default function Trades(props) {
           </tr>
         </thead>
         <tbody>
-          {trades.map(({ startIndex, direction }) => (
+          {trades.map(({ startIndex, direction }, i) => (
             <tr
               key={startIndex}
+              data-testid={`trade-row-${i + 1}`}
               className={styles.row}
               onMouseOver={onTradeMouseOver.bind(null, startIndex)}
               onMouseOut={onTradeMouseOut.bind(null, startIndex)}
