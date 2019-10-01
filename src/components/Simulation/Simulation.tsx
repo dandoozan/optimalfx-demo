@@ -122,6 +122,7 @@ export default class Simulation extends Component<Props, State> {
         let newTrade = {
           ...patterns[simulationIndex].trade,
           startIndex,
+          startDate: ohlcData[startIndex].date,
         };
 
         this.tradeIndicesOnChart.add(startIndex);
@@ -255,7 +256,6 @@ export default class Simulation extends Component<Props, State> {
         />
         <Trades
           {...{
-            ohlcData,
             trades,
             onTradeMouseOver,
             onTradeMouseOut,

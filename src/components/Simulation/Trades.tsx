@@ -4,7 +4,6 @@ import { Table } from 'react-bootstrap';
 
 export default function Trades(props) {
   let {
-    ohlcData,
     trades,
     onTradeMouseOver,
     onTradeMouseOut,
@@ -23,7 +22,7 @@ export default function Trades(props) {
           </tr>
         </thead>
         <tbody>
-          {trades.map(({ startIndex, direction }, i) => (
+          {trades.map(({ startIndex, startDate, direction }, i) => (
             <tr
               key={startIndex}
               data-testid={`trade-row-${i + 1}`}
@@ -32,7 +31,7 @@ export default function Trades(props) {
               onMouseOut={onTradeMouseOut.bind(null, startIndex)}
               onClick={onTradeClick.bind(null, startIndex)}
             >
-              <td>{timeFormatter(ohlcData[startIndex].date)}</td>
+              <td>{timeFormatter(startDate)}</td>
               <td>{direction}</td>
             </tr>
           ))}
