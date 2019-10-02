@@ -25,7 +25,7 @@ it('should run to next trade when "Continue" is clicked', async () => {
 
   await continueToSecondTrade(queries);
 
-  expect(getByTestId('trade-row-2')).not.toBeNull();
+  expect(getByTestId('trade-row-2')).toBeInTheDocument();
 });
 
 it('should reset chart when "Reset" is clicked', async () => {
@@ -47,6 +47,5 @@ it('should select trade when a trade row is clicked', async () => {
 
   fireEvent.click(getByTestId('trade-row-1'));
 
-  expect(await findByTestId('trade-line-1')).not.toBeNull();
+  expect(await findByTestId('trade-line-1')).toBeInTheDocument();
 });
-
