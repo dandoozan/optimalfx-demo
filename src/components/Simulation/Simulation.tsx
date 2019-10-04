@@ -16,6 +16,7 @@ interface State {
   selectedIndex: number;
   focalTradeIndex: number;
   trades: any[];
+  rootFontSize: number;
 }
 
 export default class Simulation extends Component<Props, State> {
@@ -25,39 +26,26 @@ export default class Simulation extends Component<Props, State> {
     isRunning: false,
     simulationIndex: -1,
     selectedIndex: -1,
-    trades: [],
     focalTradeIndex: -1,
+    trades: [],
+    rootFontSize: this.getRootFontSize(),
   };
-  xScale;
-  yScale;
   timeFormatter: Function;
-  chartWidth: number;
-  chartHeight: number;
-  paddingBottom: number;
-  paddingRight: number;
-  barWidth: number;
+  mainContentWidthInEm: number;
 
   constructor(props: Props) {
     super(props);
 
     this.tradeIndicesOnChart = new Set();
-
-    this.chartWidth = 600;
-    this.chartHeight = (this.chartWidth * 3) / 5;
-    this.barWidth = this.chartWidth / ohlcData.length;
-    this.paddingBottom = 50;
-    this.paddingRight = this.barWidth;
-    this.xScale = this.createXScale(
-      ohlcData,
-      this.chartWidth - this.barWidth - this.paddingRight
-    );
-    this.yScale = this.createYScale(
-      ohlcData,
-      this.chartHeight - this.paddingBottom
-    );
     this.timeFormatter = utcFormat('%H:%M');
+    this.mainContentWidthInEm = parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue(
+        '--main-content-width'
+      )
+    );
 
     //event listeners bindings
+    this.onResize = this.onResize.bind(this);
     this.onBarMouseOver = this.onBarMouseOver.bind(this);
     this.onBarMouseOut = this.onBarMouseOut.bind(this);
     this.onBarClick = this.onBarClick.bind(this);
@@ -66,6 +54,12 @@ export default class Simulation extends Component<Props, State> {
     this.onTradeClick = this.onTradeClick.bind(this);
     this.onReset = this.onReset.bind(this);
     this.onContinue = this.onContinue.bind(this);
+  }
+
+  getRootFontSize() {
+    return parseFloat(
+      getComputedStyle(document.documentElement).getPropertyValue('font-size')
+    );
   }
 
   createXScale(data, width) {
@@ -106,6 +100,9 @@ export default class Simulation extends Component<Props, State> {
   }
 
   componentDidMount() {
+    window.addEventListener('resize', this.onResize);
+
+    //start the simulation
     this.run();
   }
 
@@ -136,6 +133,10 @@ export default class Simulation extends Component<Props, State> {
 
   componentWillUnmount() {
     this.pause();
+  }
+
+  onResize() {
+    this.setState({ rootFontSize: this.getRootFontSize() });
   }
 
   onBarMouseOver(barIndex: number) {
@@ -208,12 +209,8 @@ export default class Simulation extends Component<Props, State> {
 
   render() {
     let {
-      chartWidth,
-      chartHeight,
-      xScale,
-      yScale,
       timeFormatter,
-      barWidth,
+      mainContentWidthInEm,
       onBarMouseOver,
       onBarMouseOut,
       onBarClick,
@@ -229,8 +226,22 @@ export default class Simulation extends Component<Props, State> {
       selectedIndex,
       trades,
       focalTradeIndex,
+      rootFontSize,
     } = this.state;
     let pattern = patterns[selectedIndex] || patterns[simulationIndex];
+
+    let mainContentWidth = mainContentWidthInEm * rootFontSize;
+    let chartWidth = mainContentWidth * 0.75;
+    let chartHeight = chartWidth * 0.6;
+    let barWidth = chartWidth / ohlcData.length;
+    let paddingBottom = chartHeight * 0.1;
+    let paddingRight = barWidth;
+    let xScale = this.createXScale(
+      ohlcData,
+      chartWidth - barWidth - paddingRight
+    );
+    let yScale = this.createYScale(ohlcData, chartHeight - paddingBottom);
+
     return (
       <div className={styles.simulation}>
         <Legend />

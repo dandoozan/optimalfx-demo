@@ -1,8 +1,20 @@
 :root {
-  --main-content-width: 775px;
+  font-size: 1.5vw;
+  --main-content-width: 48em;
   --current-line-color: red;
   --trade-color: hsl(240, 100%, 50%); /* blue */
   --trade-color-dimmed: hsl(240, 100%, 85%); /* lighter blue */
   --base-pattern-color: hsl(0, 0%, 90%);
   --similar-pattern-color: hsl(0, 0%, 95%);
+}
+
+@media (max-width: 800px) {
+  :root {
+    font-size: 12px;
+  }
+}
+@media (min-width: 1067px) {
+  :root {
+    font-size: 16px;
+  }
 }
