@@ -1,15 +1,12 @@
 .backgroundBar {
   fill: white;
-  stroke: white;
 }
 
 .backgroundBar.base {
   fill: var(--base-pattern-color);
-  stroke: var(--base-pattern-color);
 }
 .backgroundBar.similar {
   fill: var(--similar-pattern-color);
-  stroke: var(--similar-pattern-color);
 }
 
 .backgroundBar:hover {
