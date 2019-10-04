@@ -1,6 +1,6 @@
 :root {
   font-size: 1.5vw;
-  --main-content-width: 48em;
+  --main-content-width: 50em;
   --current-line-color: red;
   --trade-color: hsl(240, 100%, 50%); /* blue */
   --trade-color-dimmed: hsl(240, 100%, 85%); /* lighter blue */
