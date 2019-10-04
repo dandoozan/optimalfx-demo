@@ -10,7 +10,7 @@ export default function Description() {
         recently-completed bars) is matched with similar historical bar
         patterns to find high-confidence trades.
       </p>
-      <p className={styles.paragraph}>See the simulation below for a demo:</p>
+      <p className={styles.paragraph}>See the interactive simulation below for a demo:</p>
     </div>
   );
 }
