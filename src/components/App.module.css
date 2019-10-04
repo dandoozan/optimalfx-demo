@@ -1,6 +1,7 @@
 .app {
   display: grid;
   grid-template-columns: auto var(--main-content-width) auto;
+  column-gap: 1em;
   grid-template-areas:
     'header header header'
     '. desc .'
