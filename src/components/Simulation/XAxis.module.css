@@ -1,3 +1,7 @@
 .xAxis {
   grid-area: xaxis;
 }
+
+.xAxis :global(.domain) {
+  display: none;
+}
