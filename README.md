@@ -2,7 +2,9 @@
 
 Link to demo: https://dandoozan.github.io/optimalfx-demo
 
-![Demo screenshot](misc/demo_screenshot.png)
+<p align="center">
+  <img src="misc/demo_screenshot.png" width="600" alt="Demo screenshot">
+</p>
 
 ## Technologies used in this project
 - Create-React-App
