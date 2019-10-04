@@ -16,7 +16,7 @@
   fill: hsl(0, 0%, 95%);
 }
 .backgroundBar.base:hover {
-  fill: hsl(0, 0%, 85%);
+  fill: hsl(0, 0%, 83%);
 }
 .backgroundBar.similar:hover {
   fill: hsl(0, 0%, 90%);
