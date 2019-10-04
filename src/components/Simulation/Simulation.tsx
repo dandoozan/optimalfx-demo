@@ -38,11 +38,12 @@ export default class Simulation extends Component<Props, State> {
 
     this.tradeIndicesOnChart = new Set();
     this.timeFormatter = utcFormat('%H:%M');
-    this.mainContentWidthInEm = parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue(
-        '--main-content-width'
-      )
-    );
+    this.mainContentWidthInEm =
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          '--main-content-width'
+        )
+      ) || 50; //set a default for tests
 
     //event listeners bindings
     this.onResize = this.onResize.bind(this);
@@ -57,8 +58,10 @@ export default class Simulation extends Component<Props, State> {
   }
 
   getRootFontSize() {
-    return parseFloat(
-      getComputedStyle(document.documentElement).getPropertyValue('font-size')
+    return (
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue('font-size')
+      ) || 16  //set a default for tests
     );
   }
 
