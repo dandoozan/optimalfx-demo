@@ -11,7 +11,7 @@ export default function Description() {
         to find high-confidence trades.
       </p>
       <p className={styles.paragraph}>
-        See the interactive simulation below for a demo:
+        See a simulation in the interactive demo below:
       </p>
     </div>
   );
