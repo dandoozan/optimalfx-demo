@@ -23,7 +23,7 @@ export default function Chart(props) {
     onBarMouseOut,
     onBarClick,
   } = props;
-  
+
   return (
     <div className={styles.chart}>
       <svg width={chartWidth} height={chartHeight}>

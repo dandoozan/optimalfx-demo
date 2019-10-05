@@ -61,7 +61,7 @@ export default class Simulation extends Component<Props, State> {
     return (
       parseFloat(
         getComputedStyle(document.documentElement).getPropertyValue('font-size')
-      ) || 16  //set a default for tests
+      ) || 16 //set a default for tests
     );
   }
 

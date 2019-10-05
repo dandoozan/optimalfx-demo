@@ -4,9 +4,8 @@
   display: grid;
   grid-template-columns: min-content;
   grid-template-areas:
-			"legend legend"
-      "chart trades"
-      "xaxis ."
-      "controls controls";
+    'legend legend'
+    'chart trades'
+    'xaxis .'
+    'controls controls';
 }
-

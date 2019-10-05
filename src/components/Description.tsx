@@ -7,10 +7,12 @@ export default function Description() {
       <p className={styles.paragraph}>
         A trading strategy that compares recent price movements to similar ones
         from the past. A "base pattern" (consisting of two or more
-        recently-completed bars) is matched with similar historical bar
-        patterns to find high-confidence trades.
+        recently-completed bars) is matched with similar historical bar patterns
+        to find high-confidence trades.
       </p>
-      <p className={styles.paragraph}>See the interactive simulation below for a demo:</p>
+      <p className={styles.paragraph}>
+        See the interactive simulation below for a demo:
+      </p>
     </div>
   );
 }
