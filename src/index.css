@@ -2,10 +2,10 @@
   font-size: 1.5vw;
   --main-content-width: 50em;
   --current-line-color: red;
-  --trade-color: hsl(211, 100%, 40%);
-  --trade-color-dimmed: hsl(0, 0%, 70%);
-  --base-pattern-color: hsl(211, 100%, 90%);
-  --similar-pattern-color: hsl(211, 100%, 96%);
+  --trade-color: hsl(240, 100%, 50%); /* blue */
+  --trade-color-dimmed: hsl(240, 100%, 85%); /* lighter blue */
+  --base-pattern-color: hsl(211, 0%, 88%);
+  --similar-pattern-color: hsl(211, 0%, 95%);
 }
 
 @media (max-width: 800px) {
