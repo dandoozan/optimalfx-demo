@@ -11,3 +11,8 @@
 .text {
   margin-top: 1em;
 }
+
+.text small {
+  font-size: 65%;
+  margin-left: 0.5em;
+}

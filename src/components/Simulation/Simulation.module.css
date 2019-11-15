@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: min-content;
   grid-template-areas:
+    'title title'
     'legend legend'
     'chart trades'
     'xaxis .'

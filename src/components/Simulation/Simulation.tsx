@@ -247,6 +247,7 @@ export default class Simulation extends Component<Props, State> {
 
     return (
       <div className={styles.simulation}>
+        <h3 style={{ gridArea: 'title' }}>Demo</h3>
         <Legend />
         <Chart
           {...{

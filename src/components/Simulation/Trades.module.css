@@ -5,6 +5,7 @@
   text-transform: capitalize;
   border: 1px solid hsl(0, 0%, 70%);
   border-left: none;
+  border-top: none;
 }
 
 .row {

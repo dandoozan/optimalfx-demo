@@ -6,7 +6,8 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.innerHeader}>
         <h1 className={styles.text}>
-          OptimalFX <small className="text-muted">Demo</small>
+          OptimalFX
+          <small className="text-muted">Algorithmic Forex Trading</small>
         </h1>
       </div>
     </header>
