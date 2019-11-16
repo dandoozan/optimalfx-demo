@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Trades.module.css';
 import { Table } from 'react-bootstrap';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 export default function Trades(props) {
   let {
@@ -17,8 +18,9 @@ export default function Trades(props) {
       <Table className={styles.tradesTable} size="sm" hover>
         <thead>
           <tr>
-            <th>Time</th>
-            <th>Direction</th>
+            <th style={{ width: '22%' }}></th>
+            <th style={{ width: '32%' }}>Time</th>
+            <th style={{ width: '46%' }}>Direction</th>
           </tr>
         </thead>
         <tbody>
@@ -31,6 +33,9 @@ export default function Trades(props) {
               onMouseOut={onTradeMouseOut.bind(null, startIndex)}
               onClick={onTradeClick.bind(null, startIndex)}
             >
+              <td>
+                <ChevronRightIcon className={styles.arrow} />
+              </td>
               <td>{timeFormatter(startDate)}</td>
               <td>{direction}</td>
             </tr>

@@ -4,8 +4,8 @@
   "homepage": "https://dandoozan.github.io/optimalfx-demo",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.4.3",
-    "@material-ui/icons": "^4.4.3",
+    "@material-ui/core": "^4.6.1",
+    "@material-ui/icons": "^4.5.1",
     "@testing-library/jest-dom": "^4.1.0",
     "@testing-library/react": "^9.2.0",
     "@types/d3": "^5.7.2",

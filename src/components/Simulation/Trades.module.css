@@ -11,3 +11,7 @@
 .row {
   cursor: default;
 }
+
+.arrow {
+  color: var(--trade-color);
+}
