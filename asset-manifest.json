@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/optimalfx-demo/static/css/main.e6a870ab.chunk.css",
-    "main.js": "/optimalfx-demo/static/js/main.9d484b2e.chunk.js",
-    "main.js.map": "/optimalfx-demo/static/js/main.9d484b2e.chunk.js.map",
+    "main.css": "/optimalfx-demo/static/css/main.9fa132ef.chunk.css",
+    "main.js": "/optimalfx-demo/static/js/main.961f5236.chunk.js",
+    "main.js.map": "/optimalfx-demo/static/js/main.961f5236.chunk.js.map",
     "runtime~main.js": "/optimalfx-demo/static/js/runtime~main.1553eed0.js",
     "runtime~main.js.map": "/optimalfx-demo/static/js/runtime~main.1553eed0.js.map",
     "static/css/2.266e55a5.chunk.css": "/optimalfx-demo/static/css/2.266e55a5.chunk.css",
-    "static/js/2.cedb9e14.chunk.js": "/optimalfx-demo/static/js/2.cedb9e14.chunk.js",
-    "static/js/2.cedb9e14.chunk.js.map": "/optimalfx-demo/static/js/2.cedb9e14.chunk.js.map",
+    "static/js/2.abd3fad3.chunk.js": "/optimalfx-demo/static/js/2.abd3fad3.chunk.js",
+    "static/js/2.abd3fad3.chunk.js.map": "/optimalfx-demo/static/js/2.abd3fad3.chunk.js.map",
     "index.html": "/optimalfx-demo/index.html",
-    "precache-manifest.81355f93269efb008bbe7b5786b640b2.js": "/optimalfx-demo/precache-manifest.81355f93269efb008bbe7b5786b640b2.js",
+    "precache-manifest.8acb3fb14afaa155f011a4e07ff454a9.js": "/optimalfx-demo/precache-manifest.8acb3fb14afaa155f011a4e07ff454a9.js",
     "service-worker.js": "/optimalfx-demo/service-worker.js",
     "static/css/2.266e55a5.chunk.css.map": "/optimalfx-demo/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.e6a870ab.chunk.css.map": "/optimalfx-demo/static/css/main.e6a870ab.chunk.css.map"
+    "static/css/main.9fa132ef.chunk.css.map": "/optimalfx-demo/static/css/main.9fa132ef.chunk.css.map"
   }
 }
