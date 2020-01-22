@@ -1,7 +1,7 @@
 {
-  "name": "optimalfx-demo",
+  "name": "optimalfx-react",
   "version": "0.1.0",
-  "homepage": "https://dandoozan.github.io/optimalfx-demo",
+  "homepage": "https://dandoozan.github.io/optimalfx-react",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.6.1",
