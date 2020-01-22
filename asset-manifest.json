@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/optimalfx-demo/static/css/main.9fa132ef.chunk.css",
-    "main.js": "/optimalfx-demo/static/js/main.0824a85f.chunk.js",
-    "main.js.map": "/optimalfx-demo/static/js/main.0824a85f.chunk.js.map",
-    "runtime~main.js": "/optimalfx-demo/static/js/runtime~main.1553eed0.js",
-    "runtime~main.js.map": "/optimalfx-demo/static/js/runtime~main.1553eed0.js.map",
-    "static/css/2.266e55a5.chunk.css": "/optimalfx-demo/static/css/2.266e55a5.chunk.css",
-    "static/js/2.abd3fad3.chunk.js": "/optimalfx-demo/static/js/2.abd3fad3.chunk.js",
-    "static/js/2.abd3fad3.chunk.js.map": "/optimalfx-demo/static/js/2.abd3fad3.chunk.js.map",
-    "index.html": "/optimalfx-demo/index.html",
-    "precache-manifest.f170c626d362654c4ed65ff99e18c813.js": "/optimalfx-demo/precache-manifest.f170c626d362654c4ed65ff99e18c813.js",
-    "service-worker.js": "/optimalfx-demo/service-worker.js",
-    "static/css/2.266e55a5.chunk.css.map": "/optimalfx-demo/static/css/2.266e55a5.chunk.css.map",
-    "static/css/main.9fa132ef.chunk.css.map": "/optimalfx-demo/static/css/main.9fa132ef.chunk.css.map"
+    "main.css": "/optimalfx-react/static/css/main.9fa132ef.chunk.css",
+    "main.js": "/optimalfx-react/static/js/main.d6be8d1a.chunk.js",
+    "main.js.map": "/optimalfx-react/static/js/main.d6be8d1a.chunk.js.map",
+    "runtime~main.js": "/optimalfx-react/static/js/runtime~main.1f09e967.js",
+    "runtime~main.js.map": "/optimalfx-react/static/js/runtime~main.1f09e967.js.map",
+    "static/css/2.266e55a5.chunk.css": "/optimalfx-react/static/css/2.266e55a5.chunk.css",
+    "static/js/2.31ba1b9b.chunk.js": "/optimalfx-react/static/js/2.31ba1b9b.chunk.js",
+    "static/js/2.31ba1b9b.chunk.js.map": "/optimalfx-react/static/js/2.31ba1b9b.chunk.js.map",
+    "index.html": "/optimalfx-react/index.html",
+    "precache-manifest.ee862ebefdeeaaa4102511b83d82aa70.js": "/optimalfx-react/precache-manifest.ee862ebefdeeaaa4102511b83d82aa70.js",
+    "service-worker.js": "/optimalfx-react/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/optimalfx-react/static/css/2.266e55a5.chunk.css.map",
+    "static/css/main.9fa132ef.chunk.css.map": "/optimalfx-react/static/css/main.9fa132ef.chunk.css.map"
   }
 }
